@@ -1,0 +1,316 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   BUNDA AMI · DESIGN SYSTEM
+   Palet biru-putih premium dengan aksen hangat champagne-gold.
+   Tipografi: Fraunces (display serif) + Plus Jakarta Sans (body).
+   ══════════════════════════════════════════════════════════════════════════ */
+
+:root {
+  /* ── Warna inti ── */
+  --ink: #072a40;          /* navy paling dalam — judul, teks tegas */
+  --ink-2: #0d3f5c;        /* navy sekunder */
+  --azure: #0098d8;        /* biru utama (brand) */
+  --azure-deep: #0072ad;   /* biru lebih dalam untuk gradient */
+  --sky: #3fc6f2;          /* biru cerah — highlight & cahaya */
+  --mist: #eff8fd;         /* latar lembut */
+  --mist-2: #e1f1fb;       /* latar lembut sekunder */
+  --gold: #e4c079;         /* aksen hangat (dipakai HEMAT) */
+  --gold-soft: #f4e6c6;    /* aksen hangat lembut */
+  --pearl: #ffffff;
+
+  /* ── Teks ── */
+  --text: #2a4d60;         /* teks isi */
+  --muted: #5f7a8a;        /* teks redup */
+  --on-dark: rgba(255, 255, 255, 0.92);
+  --on-dark-soft: rgba(255, 255, 255, 0.66);
+
+  /* ── Garis & permukaan ── */
+  --line: rgba(7, 42, 64, 0.1);
+  --line-strong: rgba(7, 42, 64, 0.16);
+  --glass: rgba(255, 255, 255, 0.72);
+  --glass-strong: rgba(255, 255, 255, 0.86);
+
+  /* ── Bayangan ── */
+  --shadow-sm: 0 4px 14px rgba(7, 50, 75, 0.06);
+  --shadow-md: 0 16px 40px rgba(7, 50, 75, 0.1);
+  --shadow-lg: 0 30px 70px rgba(7, 50, 75, 0.16);
+  --shadow-glow: 0 20px 50px rgba(0, 152, 216, 0.28);
+
+  /* ── Radius ── */
+  --r-sm: 14px;
+  --r-md: 20px;
+  --r-lg: 28px;
+  --r-xl: 36px;
+  --r-full: 999px;
+
+  /* ── Tipografi ── */
+  --font-display: 'Fraunces', 'Georgia', 'Times New Roman', serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* ── Layout ── */
+  --container: 1120px;
+  --gutter: clamp(20px, 5vw, 56px);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--mist);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+::selection {
+  background: var(--sky);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 3px solid var(--azure);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ── Tipografi utilitas ── */
+.font-display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--azure-deep);
+}
+
+.eyebrow::before {
+  content: '';
+  width: 26px;
+  height: 1.5px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+}
+
+/* ── Container ── */
+.container {
+  width: min(100% - var(--gutter) * 2, var(--container));
+  margin-inline: auto;
+}
+
+/* ── Tombol ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 28px;
+  border: 1px solid transparent;
+  border-radius: var(--r-full);
+  font-family: var(--font-sans);
+  font-size: 0.98rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.btn svg {
+  width: 19px;
+  height: 19px;
+}
+
+.btn-primary {
+  color: var(--pearl);
+  background: linear-gradient(135deg, var(--azure) 0%, var(--azure-deep) 100%);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 26px 60px rgba(0, 152, 216, 0.36);
+}
+
+.btn-ghost {
+  color: var(--ink-2);
+  background: var(--glass-strong);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-ghost:hover {
+  transform: translateY(-3px);
+  border-color: rgba(0, 152, 216, 0.4);
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Primitif section landing ── */
+.sec {
+  padding: clamp(64px, 11vw, 122px) 0;
+}
+
+.sec-sm {
+  padding: clamp(48px, 8vw, 88px) 0;
+}
+
+.sec-head {
+  max-width: 720px;
+}
+
+.sec-head.center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+.sec-head.center .eyebrow {
+  justify-content: center;
+}
+
+.sec-head.center .eyebrow::before {
+  display: none;
+}
+
+.sec-title {
+  margin-top: 16px;
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  font-weight: 600;
+  font-size: clamp(1.9rem, 4.6vw, 3rem);
+  line-height: 1.08;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+}
+
+.sec-intro {
+  margin-top: 18px;
+  font-size: clamp(1rem, 2.2vw, 1.14rem);
+  line-height: 1.7;
+  color: var(--muted);
+  max-width: 60ch;
+}
+
+.sec-head.center .sec-intro {
+  margin-inline: auto;
+}
+
+/* ── Aurora (cahaya ambient di latar) ── */
+.aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 50% -10%, var(--mist-2) 0%, var(--mist) 46%, #ffffff 100%);
+}
+
+.aurora span {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.aurora .a1 {
+  width: 46vw;
+  height: 46vw;
+  top: -14vw;
+  left: -8vw;
+  background: radial-gradient(circle, rgba(63, 198, 242, 0.55), transparent 65%);
+  animation: drift1 22s ease-in-out infinite;
+}
+
+.aurora .a2 {
+  width: 38vw;
+  height: 38vw;
+  top: 6vw;
+  right: -10vw;
+  background: radial-gradient(circle, rgba(0, 152, 216, 0.4), transparent 65%);
+  animation: drift2 26s ease-in-out infinite;
+}
+
+.aurora .a3 {
+  width: 30vw;
+  height: 30vw;
+  bottom: -12vw;
+  left: 30vw;
+  background: radial-gradient(circle, rgba(228, 192, 121, 0.3), transparent 60%);
+  animation: drift3 30s ease-in-out infinite;
+}
+
+@keyframes drift1 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(6vw, 5vw) scale(1.12); }
+}
+@keyframes drift2 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(-5vw, 7vw) scale(1.08); }
+}
+@keyframes drift3 {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(4vw, -6vw) scale(1.15); }
+}
+
+/* ── Reveal saat scroll ──
+   Hanya disembunyikan bila JavaScript aktif (html.js). Tanpa JS, konten
+   tetap tampil penuh agar tidak ada yang hilang. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Hormati preferensi reduce motion ── */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .js .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}

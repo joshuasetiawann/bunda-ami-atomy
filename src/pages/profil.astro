@@ -1,0 +1,35 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Nav from '../components/landing/Nav.astro';
+import Hero from '../components/landing/Hero.astro';
+import About from '../components/landing/About.astro';
+import VisiMisi from '../components/landing/VisiMisi.astro';
+import Pencapaian from '../components/landing/Pencapaian.astro';
+import Offerings from '../components/landing/Offerings.astro';
+import Kontribusi from '../components/landing/Kontribusi.astro';
+import Cerita from '../components/landing/Cerita.astro';
+import QuotesSection from '../components/landing/QuotesSection.astro';
+import ContactCTA from '../components/landing/ContactCTA.astro';
+import Footer from '../components/landing/Footer.astro';
+import { site } from '../data/site';
+
+const title = `Profil ${site.name} · ${site.role}`;
+const description =
+  'Mengenal Bunda Ami lebih dekat — sosok, visi & misi, pencapaian, kontribusi di masyarakat, dan perjalanannya bersama Atomy.';
+---
+
+<BaseLayout title={title} description={description} bodyClass="page-landing">
+  <Nav />
+  <main>
+    <Hero />
+    <About />
+    <VisiMisi />
+    <Pencapaian />
+    <Offerings />
+    <Kontribusi />
+    <Cerita />
+    <QuotesSection />
+    <ContactCTA />
+  </main>
+  <Footer />
+</BaseLayout>

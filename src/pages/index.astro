@@ -1,0 +1,104 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ProfileHeader from '../components/linktree/ProfileHeader.astro';
+import QuoteRotator from '../components/linktree/QuoteRotator.astro';
+import LinkButton from '../components/linktree/LinkButton.astro';
+import ShareBar from '../components/linktree/ShareBar.astro';
+import { links } from '../data/links';
+import { site } from '../data/site';
+---
+
+<BaseLayout bodyClass="page-linktree">
+  <main class="lt">
+    <ProfileHeader />
+
+    <section class="lt-quote reveal">
+      <QuoteRotator />
+    </section>
+
+    <h2 class="lt-heading reveal">
+      <span>Tautan Resmi</span>
+    </h2>
+
+    <nav class="lt-links" aria-label="Tautan resmi Bunda Ami">
+      {
+        links.map((link, i) => (
+          <div class="reveal" style={`transition-delay:${i * 60}ms`}>
+            <LinkButton link={link} />
+          </div>
+        ))
+      }
+    </nav>
+
+    <div class="lt-share reveal">
+      <ShareBar />
+    </div>
+
+    <footer class="lt-footer">
+      <p class="copyright">{site.copyright}</p>
+      <p class="disclaimer">{site.disclaimer}</p>
+    </footer>
+  </main>
+</BaseLayout>
+
+<style>
+  .lt {
+    width: min(100% - 36px, 480px);
+    margin-inline: auto;
+    padding: clamp(34px, 8vw, 56px) 0 40px;
+    display: grid;
+    gap: 26px;
+  }
+
+  .lt-quote {
+    margin-top: 4px;
+  }
+
+  .lt-heading {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 4px 2px -6px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--azure-deep);
+  }
+
+  .lt-heading::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--line-strong), transparent);
+  }
+
+  .lt-links {
+    display: grid;
+    gap: 12px;
+  }
+
+  .lt-share {
+    margin-top: 6px;
+  }
+
+  .lt-footer {
+    margin-top: 12px;
+    text-align: center;
+    color: var(--muted);
+  }
+
+  .copyright {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--ink-2);
+  }
+
+  .disclaimer {
+    margin-top: 6px;
+    font-size: 0.76rem;
+    line-height: 1.55;
+    max-width: 40ch;
+    margin-inline: auto;
+  }
+</style>

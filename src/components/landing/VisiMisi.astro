@@ -1,0 +1,116 @@
+---
+import { profile } from '../../data/profile';
+import Icon from '../Icon.astro';
+
+const { visiMisi } = profile;
+---
+
+<section class="sec-sm vm">
+  <div class="container">
+    <div class="vm-panel reveal">
+      <div class="vm-glow" aria-hidden="true"></div>
+
+      <div class="vm-visi">
+        <p class="vm-eyebrow"><Icon name="eye" size={16} /> {visiMisi.visiTitle}</p>
+        <p class="vm-statement font-display">{visiMisi.visi}</p>
+      </div>
+
+      <div class="vm-misi">
+        <p class="vm-eyebrow"><Icon name="target" size={16} /> {visiMisi.misiTitle}</p>
+        <ol class="vm-list">
+          {visiMisi.misi.map((m) => <li>{m}</li>)}
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .vm-panel {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(32px, 5vw, 64px);
+    padding: clamp(36px, 6vw, 64px);
+    border-radius: var(--r-xl);
+    background: linear-gradient(140deg, #06314a 0%, var(--azure-deep) 60%, #0a4f76 100%);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+  }
+
+  .vm-glow {
+    position: absolute;
+    top: -30%;
+    right: -10%;
+    width: 50%;
+    height: 120%;
+    background: radial-gradient(circle, rgba(63, 198, 242, 0.5), transparent 60%);
+    pointer-events: none;
+  }
+
+  .vm-visi,
+  .vm-misi {
+    position: relative;
+  }
+
+  .vm-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold-soft);
+    margin-bottom: 18px;
+  }
+
+  .vm-statement {
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.36;
+    letter-spacing: -0.01em;
+    color: #fff;
+  }
+
+  .vm-list {
+    list-style: none;
+    counter-reset: misi;
+    display: grid;
+    gap: 16px;
+  }
+
+  .vm-list li {
+    counter-increment: misi;
+    position: relative;
+    padding-left: 44px;
+    font-size: 1rem;
+    line-height: 1.55;
+    color: var(--on-dark);
+  }
+
+  .vm-list li::before {
+    content: counter(misi, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: -2px;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--gold);
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(228, 192, 121, 0.4);
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 9px;
+  }
+
+  @media (max-width: 760px) {
+    .vm-panel {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

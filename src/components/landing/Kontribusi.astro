@@ -1,0 +1,108 @@
+---
+import { profile } from '../../data/profile';
+import Icon from '../Icon.astro';
+
+const { kontribusi } = profile;
+---
+
+<section class="sec-sm contrib" id="kontribusi">
+  <div class="container">
+    <div class="contrib-head reveal">
+      <div class="sec-head">
+        <p class="eyebrow">{kontribusi.eyebrow}</p>
+        <h2 class="sec-title">{kontribusi.title}</h2>
+      </div>
+      <p class="contrib-intro">{kontribusi.intro}</p>
+    </div>
+
+    <div class="contrib-grid">
+      {
+        kontribusi.items.map((item, i) => (
+          <article class="contrib-card reveal" style={`transition-delay:${i * 80}ms`}>
+            <span class="contrib-icon"><Icon name={item.icon} size={22} /></span>
+            <div>
+              <h3 class="contrib-title">{item.title}</h3>
+              <p class="contrib-desc">{item.desc}</p>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .contrib-head {
+    display: grid;
+    grid-template-columns: 1fr 0.85fr;
+    gap: clamp(24px, 5vw, 56px);
+    align-items: end;
+  }
+
+  .contrib-intro {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    font-style: italic;
+    font-family: var(--font-display);
+    color: var(--ink-2);
+  }
+
+  .contrib-grid {
+    margin-top: clamp(32px, 5vw, 52px);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .contrib-card {
+    display: flex;
+    gap: 16px;
+    padding: 28px 26px;
+    border-radius: var(--r-lg);
+    background: linear-gradient(165deg, #fff, var(--mist));
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.3s ease, box-shadow 0.3s ease,
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .contrib-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .contrib-icon {
+    flex: 0 0 48px;
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    border-radius: 14px;
+    color: #b6892f;
+    background: linear-gradient(150deg, var(--gold-soft), #fff);
+    border: 1px solid rgba(228, 192, 121, 0.5);
+  }
+
+  .contrib-title {
+    font-size: 1.08rem;
+    font-weight: 800;
+    color: var(--ink);
+  }
+
+  .contrib-desc {
+    margin-top: 8px;
+    font-size: 0.94rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+
+  @media (max-width: 860px) {
+    .contrib-head {
+      grid-template-columns: 1fr;
+      align-items: start;
+    }
+    .contrib-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

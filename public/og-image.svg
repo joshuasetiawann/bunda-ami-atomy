@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4fcff"/>
+      <stop offset="0.5" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e1f1fb"/>
+    </linearGradient>
+    <linearGradient id="ink" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0098d8"/>
+      <stop offset="1" stop-color="#0072ad"/>
+    </linearGradient>
+    <radialGradient id="blue" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#3fc6f2" stop-opacity="0.55"/>
+      <stop offset="1" stop-color="#3fc6f2" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="gold" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#e4c079" stop-opacity="0.45"/>
+      <stop offset="1" stop-color="#e4c079" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="120" cy="80" r="320" fill="url(#blue)"/>
+  <circle cx="1080" cy="560" r="300" fill="url(#gold)"/>
+
+  <!-- avatar monogram -->
+  <g transform="translate(96,210)">
+    <rect width="200" height="200" rx="48" fill="url(#ink)"/>
+    <text x="100" y="138" text-anchor="middle" font-family="Georgia, serif"
+          font-size="110" font-weight="700" fill="#ffffff" letter-spacing="-3">BA</text>
+    <circle cx="176" cy="30" r="14" fill="#e4c079"/>
+  </g>
+
+  <!-- text -->
+  <text x="340" y="262" font-family="Georgia, 'Times New Roman', serif" font-size="34"
+        fill="#e4c079" font-style="italic">Pendamping Produk &amp; Member Atomy</text>
+  <text x="338" y="372" font-family="Georgia, 'Times New Roman', serif" font-size="120"
+        font-weight="700" fill="#072a40" letter-spacing="-3">Bunda Ami</text>
+  <text x="342" y="436" font-family="Georgia, serif" font-size="36" font-style="italic"
+        fill="#0072ad">Sehat &amp; berdaya, untuk setiap keluarga.</text>
+
+  <rect x="342" y="476" width="64" height="6" rx="3" fill="#e4c079"/>
+</svg>

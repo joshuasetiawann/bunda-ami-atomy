@@ -1,0 +1,78 @@
+---
+import { site } from '../../data/site';
+import Icon from '../Icon.astro';
+---
+
+<div class="share">
+  <button type="button" class="share-btn" id="share-btn" aria-label="Bagikan halaman ini">
+    <Icon name="share" size={18} />
+    <span>Bagikan halaman</span>
+  </button>
+  <span class="toast" id="share-toast" role="status">Link disalin ✓</span>
+</div>
+
+<script define:vars={{ shareTitle: site.name, shareText: site.seo.description }}>
+  const btn = document.getElementById('share-btn');
+  const toast = document.getElementById('share-toast');
+  btn?.addEventListener('click', async () => {
+    const url = window.location.href;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title: shareTitle, text: shareText, url });
+        return;
+      }
+      await navigator.clipboard.writeText(url);
+      toast?.classList.add('show');
+      setTimeout(() => toast?.classList.remove('show'), 2000);
+    } catch {
+      /* dibatalkan pengguna — abaikan */
+    }
+  });
+</script>
+
+<style>
+  .share {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .share-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 11px 20px;
+    border-radius: var(--r-full);
+    border: 1px solid var(--line-strong);
+    background: var(--glass-strong);
+    color: var(--ink-2);
+    font-family: var(--font-sans);
+    font-size: 0.86rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: var(--shadow-sm);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+  }
+
+  .share-btn:hover {
+    transform: translateY(-2px);
+    color: var(--azure-deep);
+    box-shadow: var(--shadow-md);
+  }
+
+  .toast {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--azure-deep);
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  .toast.show {
+    opacity: 1;
+    transform: none;
+  }
+</style>

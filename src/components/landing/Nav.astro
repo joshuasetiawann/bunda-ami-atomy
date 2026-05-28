@@ -1,0 +1,130 @@
+---
+import { site } from '../../data/site';
+import { links } from '../../data/links';
+import { withBase } from '../../utils/url';
+import Icon from '../Icon.astro';
+
+const wa = links.find((l) => l.id === 'whatsapp');
+const waHref = wa ? wa.href : '#';
+---
+
+<header class="nav" id="nav">
+  <div class="container nav-in">
+    <a class="brand" href={withBase('/')}>
+      <span class="brand-mark font-display">{site.initials}</span>
+      <span class="brand-name font-display">{site.name}</span>
+    </a>
+
+    <nav class="nav-actions">
+      <a class="nav-link" href={withBase('/')}>
+        <Icon name="arrow-up" size={16} /> Linktree
+      </a>
+      <a class="nav-cta" href={waHref} target="_blank" rel="noopener noreferrer">
+        <Icon name="whatsapp" size={16} /> Konsultasi
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const nav = document.getElementById('nav');
+  const onScroll = () => nav?.classList.toggle('scrolled', window.scrollY > 24);
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+</script>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: 14px 0;
+    transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
+  }
+
+  .nav.scrolled {
+    padding: 9px 0;
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(14px);
+    box-shadow: 0 1px 0 var(--line), var(--shadow-sm);
+  }
+
+  .nav-in {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 11px;
+  }
+
+  .brand-mark {
+    width: 38px;
+    height: 38px;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    background: linear-gradient(135deg, var(--azure), var(--azure-deep));
+    box-shadow: var(--shadow-sm);
+  }
+
+  .brand-name {
+    font-size: 1.18rem;
+    font-weight: 600;
+    color: var(--ink);
+    letter-spacing: -0.01em;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .nav-link,
+  .nav-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 9px 16px;
+    border-radius: var(--r-full);
+    font-size: 0.86rem;
+    font-weight: 700;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+  }
+
+  .nav-link {
+    color: var(--ink-2);
+  }
+
+  .nav-link:hover {
+    color: var(--azure-deep);
+  }
+
+  .nav-cta {
+    color: #fff;
+    background: linear-gradient(135deg, var(--azure), var(--azure-deep));
+    box-shadow: var(--shadow-glow);
+  }
+
+  .nav-cta:hover {
+    transform: translateY(-2px);
+  }
+
+  @media (max-width: 540px) {
+    .brand-name {
+      display: none;
+    }
+    .nav-link span,
+    .nav-link {
+      font-size: 0.82rem;
+    }
+  }
+</style>
