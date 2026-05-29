@@ -1,11 +1,12 @@
 # ──────────────────────────────────────────────────────────────────────────
 #  Auto-deploy ke GitHub Pages setiap kali ada push ke branch `main`.
 #
-#  Cara mengaktifkan (sekali saja):
-#  1. Buka repo di GitHub -> Settings -> Pages
-#  2. Bagian "Build and deployment" -> Source: pilih "GitHub Actions"
-#  3. Selesai. Setiap push ke main akan otomatis ter-publish.
-#     Alamat: https://joshuasetiawann.github.io/bunda-ami-atomy/
+#  Workflow ini OTOMATIS mengaktifkan GitHub Pages (enablement: true), jadi
+#  tidak perlu mengubah Settings secara manual. Alamat hasilnya:
+#      https://joshuasetiawann.github.io/bunda-ami-atomy/
+#
+#  (Kalau auto-enable gagal karena pembatasan akun/organisasi, aktifkan manual:
+#   Settings -> Pages -> Build and deployment -> Source: "GitHub Actions".)
 # ──────────────────────────────────────────────────────────────────────────
 name: Deploy ke GitHub Pages
 
@@ -29,8 +30,29 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Build dengan Astro
-        uses: withastro/action@v3
+
+      - name: Setup Pages (aktifkan otomatis bila belum)
+        id: pages
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./dist
 
   deploy:
     needs: build
