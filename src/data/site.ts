@@ -1,6 +1,6 @@
 /**
  * ════════════════════════════════════════════════════════════════════════
- *  DATA UTAMA SITUS  ·  Bunda Ami
+ *  DATA UTAMA SITUS  ·  Si Batu Kali Menjadi Berlian
  *  Edit nilai di bawah ini untuk mengubah identitas situs.
  *  Tidak perlu menyentuh file kode lain.
  * ════════════════════════════════════════════════════════════════════════
@@ -37,23 +37,23 @@ export interface SiteConfig {
 }
 
 export const site: SiteConfig = {
-  name: 'Bunda Ami',
+  name: 'Si Batu Kali Menjadi Berlian',
   role: 'Pendamping Produk & Member Atomy',
-  bio: 'Menemani keluarga Indonesia hidup lebih sehat bersama Atomy — dari produk pilihan hingga peluang berkembang. Semua kanal resmi Bunda Ami ada di sini.',
+  bio: 'Menemani keluarga Indonesia hidup lebih sehat bersama Atomy — dari produk pilihan hingga peluang berkembang. Semua kanal resmi Si Batu Kali Menjadi Berlian ada di sini.',
   verified: true,
 
   // Ganti dengan foto asli, contoh: avatar: 'img/bunda-ami.jpg'
   avatar: '',
-  initials: 'BA',
+  initials: 'SB',
 
-  copyright: '© 2026 Bunda Ami',
+  copyright: '© 2026 Si Batu Kali Menjadi Berlian',
   disclaimer:
     'Informasi produk, harga, stok, dan registrasi mengikuti kanal resmi Atomy Indonesia.',
 
   seo: {
-    title: 'Bunda Ami · Pendamping Produk & Member Atomy',
+    title: 'Si Batu Kali Menjadi Berlian · Pendamping Produk & Member Atomy',
     description:
-      'Semua kanal resmi Bunda Ami dalam satu halaman: konsultasi WhatsApp, Zoom sharing, Facebook, Instagram, TikTok, dan profil lengkap.',
+      'Semua kanal resmi Si Batu Kali Menjadi Berlian dalam satu halaman: konsultasi WhatsApp, Zoom sharing, Facebook, Instagram, TikTok, dan profil lengkap.',
     ogImage: 'og-image.svg',
     locale: 'id_ID',
   },
