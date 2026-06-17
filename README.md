@@ -70,12 +70,12 @@ npm run preview  # melihat hasil build
 
 ### Pilihan A — GitHub Pages (otomatis, sudah disiapkan)
 
-Sudah ada workflow di `.github/workflows/deploy.yml`. Aktifkan sekali saja:
+Sudah ada workflow di `.github/workflows/deploy.yml` yang **mengaktifkan GitHub
+Pages secara otomatis**. Cukup `git push` ke `main`, dan situs akan ter-publish ke
+`https://joshuasetiawann.github.io/bunda-ami-atomy/`.
 
-1. GitHub → **Settings → Pages**
-2. **Source** → pilih **GitHub Actions**
-3. Setiap `git push` ke `main` akan otomatis ter-publish ke
-   `https://joshuasetiawann.github.io/bunda-ami-atomy/`
+> Jika auto-enable gagal (karena pembatasan akun), aktifkan manual sekali saja:
+> **Settings → Pages → Source: GitHub Actions**, lalu jalankan ulang workflow.
 
 ### Pilihan B — Netlify / Vercel
 
