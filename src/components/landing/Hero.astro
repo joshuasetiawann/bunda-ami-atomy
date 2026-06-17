@@ -1,0 +1,229 @@
+---
+import { site } from '../../data/site';
+import { profile } from '../../data/profile';
+import { links } from '../../data/links';
+import { quotes } from '../../data/quotes';
+import { withBase } from '../../utils/url';
+import Icon from '../Icon.astro';
+
+const { hero } = profile;
+const wa = links.find((l) => l.id === 'whatsapp');
+const waHref = wa ? wa.href : '#';
+const avatarSrc = site.avatar ? withBase(site.avatar) : '';
+const heroQuote = quotes[0]?.text ?? '';
+const firstStat = profile.pencapaian.stats[0];
+---
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">{hero.eyebrow}</p>
+      <h1 class="hero-title font-display">{hero.title}</h1>
+      <p class="hero-tagline">{hero.tagline}</p>
+      <p class="hero-intro">{hero.intro}</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href={waHref} target="_blank" rel="noopener noreferrer">
+          <Icon name="whatsapp" size={18} /> Konsultasi dengan Bunda
+        </a>
+        <a class="btn btn-ghost" href="#cerita">
+          Lihat cerita <Icon name="arrow-right" size={18} />
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="portrait">
+        {
+          avatarSrc ? (
+            <img src={avatarSrc} alt={`Foto ${site.name}`} />
+          ) : (
+            <span class="portrait-initials font-display">{site.initials}</span>
+          )
+        }
+        <span class="portrait-corner"></span>
+      </div>
+
+      <div class="float-quote">
+        <Icon name="quote" size={26} />
+        <p>{heroQuote}</p>
+      </div>
+
+      {
+        firstStat && (
+          <div class="float-stat">
+            <strong class="font-display">{firstStat.value}</strong>
+            <span>{firstStat.label} {firstStat.desc}</span>
+          </div>
+        )
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .hero {
+    padding: clamp(40px, 7vw, 84px) 0 clamp(64px, 10vw, 110px);
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: 1.08fr 0.92fr;
+    gap: clamp(36px, 6vw, 72px);
+    align-items: center;
+  }
+
+  .hero-title {
+    margin-top: 18px;
+    font-weight: 600;
+    font-size: clamp(2.6rem, 7vw, 4.6rem);
+    line-height: 1.02;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+
+  .hero-tagline {
+    margin-top: 20px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+    line-height: 1.4;
+    color: var(--azure-deep);
+  }
+
+  .hero-intro {
+    margin-top: 18px;
+    max-width: 52ch;
+    font-size: 1.02rem;
+    line-height: 1.72;
+    color: var(--muted);
+  }
+
+  .hero-cta {
+    margin-top: 32px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+
+  /* ── Visual ── */
+  .hero-visual {
+    position: relative;
+    justify-self: center;
+    width: min(100%, 380px);
+  }
+
+  .portrait {
+    position: relative;
+    aspect-ratio: 4 / 5;
+    border-radius: var(--r-xl);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(160deg, var(--mist-2), #fff 60%, var(--gold-soft));
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow-lg);
+  }
+
+  .portrait img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .portrait-initials {
+    font-size: clamp(5rem, 16vw, 8rem);
+    font-weight: 500;
+    color: var(--azure-deep);
+    opacity: 0.85;
+  }
+
+  .portrait-corner {
+    position: absolute;
+    inset: 14px 14px auto auto;
+    width: 44px;
+    height: 44px;
+    border-top: 2px solid var(--gold);
+    border-right: 2px solid var(--gold);
+    border-radius: 0 14px 0 0;
+    opacity: 0.8;
+  }
+
+  .float-quote {
+    position: absolute;
+    left: -26px;
+    bottom: 56px;
+    width: 220px;
+    padding: 16px 18px;
+    border-radius: var(--r-md);
+    background: rgba(255, 255, 255, 0.86);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    box-shadow: var(--shadow-md);
+    color: var(--gold);
+  }
+
+  .float-quote p {
+    margin-top: 6px;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
+
+  .float-stat {
+    position: absolute;
+    right: -18px;
+    top: 40px;
+    display: grid;
+    gap: 2px;
+    padding: 14px 18px;
+    border-radius: var(--r-md);
+    background: linear-gradient(135deg, var(--azure), var(--azure-deep));
+    color: #fff;
+    box-shadow: var(--shadow-glow);
+    max-width: 150px;
+  }
+
+  .float-stat strong {
+    font-size: 1.7rem;
+    font-weight: 600;
+    line-height: 1;
+  }
+
+  .float-stat span {
+    font-size: 0.72rem;
+    line-height: 1.3;
+    color: rgba(255, 255, 255, 0.86);
+  }
+
+  @media (max-width: 860px) {
+    .hero-grid {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .hero .eyebrow {
+      justify-content: center;
+    }
+    .hero-intro {
+      margin-inline: auto;
+    }
+    .hero-cta {
+      justify-content: center;
+    }
+    .hero-visual {
+      order: -1;
+      width: min(100%, 320px);
+    }
+  }
+
+  @media (max-width: 420px) {
+    .float-quote {
+      left: -8px;
+      width: 180px;
+    }
+    .float-stat {
+      right: -6px;
+    }
+  }
+</style>

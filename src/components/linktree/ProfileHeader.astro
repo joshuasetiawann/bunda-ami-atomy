@@ -1,0 +1,122 @@
+---
+import { site } from '../../data/site';
+import { withBase } from '../../utils/url';
+import Icon from '../Icon.astro';
+
+const avatarSrc = site.avatar ? withBase(site.avatar) : '';
+---
+
+<header class="profile">
+  <div class="avatar-ring">
+    <div class="avatar">
+      {
+        avatarSrc ? (
+          <img src={avatarSrc} alt={`Foto ${site.name}`} width="120" height="120" />
+        ) : (
+          <span class="initials">{site.initials}</span>
+        )
+      }
+    </div>
+    {
+      site.verified && (
+        <span class="badge" title="Akun resmi terverifikasi">
+          <Icon name="check" size={13} />
+        </span>
+      )
+    }
+  </div>
+
+  <h1 class="name font-display">{site.name}</h1>
+  <p class="role">{site.role}</p>
+  <p class="bio">{site.bio}</p>
+</header>
+
+<style>
+  .profile {
+    text-align: center;
+    display: grid;
+    justify-items: center;
+  }
+
+  .avatar-ring {
+    position: relative;
+    width: 116px;
+    height: 116px;
+    border-radius: 50%;
+    padding: 4px;
+    background: conic-gradient(
+      from 140deg,
+      var(--sky),
+      var(--azure),
+      var(--gold-soft),
+      var(--sky)
+    );
+    box-shadow: 0 18px 40px rgba(0, 114, 173, 0.28);
+  }
+
+  .avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    background: linear-gradient(150deg, #ffffff, var(--mist-2));
+    border: 4px solid var(--pearl);
+  }
+
+  .avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .initials {
+    font-family: var(--font-display);
+    font-size: 2.6rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--azure-deep);
+  }
+
+  .badge {
+    position: absolute;
+    right: 4px;
+    bottom: 6px;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #fff;
+    background: linear-gradient(135deg, var(--azure), var(--azure-deep));
+    border: 3px solid var(--pearl);
+    box-shadow: var(--shadow-sm);
+  }
+
+  .name {
+    margin-top: 18px;
+    font-size: clamp(1.9rem, 7vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.05;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+
+  .role {
+    margin-top: 8px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--azure-deep);
+  }
+
+  .bio {
+    max-width: 34ch;
+    margin: 14px auto 0;
+    font-size: 0.97rem;
+    line-height: 1.6;
+    color: var(--muted);
+  }
+</style>

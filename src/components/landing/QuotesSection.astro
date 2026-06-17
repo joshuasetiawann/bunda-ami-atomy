@@ -1,0 +1,103 @@
+---
+import { quotes } from '../../data/quotes';
+import Icon from '../Icon.astro';
+
+const first = quotes[0] ?? { text: '', author: '' };
+---
+
+<section class="sec-sm quotes">
+  <div class="container">
+    <figure class="big-quote reveal" aria-live="polite">
+      <span class="bq-mark"><Icon name="quote" size={64} /></span>
+      <blockquote class="bq-text font-display" id="bq-text">{first.text}</blockquote>
+      <figcaption
+        class="bq-author"
+        id="bq-author"
+        data-empty={first.author ? 'false' : 'true'}
+      >
+        {first.author}
+      </figcaption>
+    </figure>
+  </div>
+</section>
+
+<script define:vars={{ quotes }}>
+  const t = document.getElementById('bq-text');
+  const a = document.getElementById('bq-author');
+  if (t && quotes.length > 1) {
+    let i = 0;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const fig = t.closest('.big-quote');
+    setInterval(() => {
+      i = (i + 1) % quotes.length;
+      const apply = () => {
+        t.textContent = quotes[i].text;
+        a.textContent = quotes[i].author || '';
+        a.dataset.empty = quotes[i].author ? 'false' : 'true';
+      };
+      if (reduce) return apply();
+      fig.classList.add('fading');
+      setTimeout(() => {
+        apply();
+        fig.classList.remove('fading');
+      }, 420);
+    }, 6500);
+  }
+</script>
+
+<style>
+  .big-quote {
+    position: relative;
+    max-width: 880px;
+    margin-inline: auto;
+    text-align: center;
+    padding: clamp(36px, 6vw, 64px) clamp(20px, 4vw, 40px);
+  }
+
+  .bq-mark {
+    display: inline-grid;
+    place-items: center;
+    color: var(--gold);
+    opacity: 0.9;
+    filter: drop-shadow(0 8px 18px rgba(228, 192, 121, 0.36));
+  }
+
+  .bq-text,
+  .bq-author {
+    transition: opacity 0.42s ease, transform 0.42s ease;
+  }
+
+  .bq-text {
+    margin-top: 18px;
+    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    font-style: italic;
+    font-weight: 500;
+    line-height: 1.4;
+    letter-spacing: -0.015em;
+    color: var(--ink);
+  }
+
+  .bq-author {
+    margin-top: 22px;
+    font-family: var(--font-sans);
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--azure-deep);
+  }
+
+  .bq-author[data-empty='true'] {
+    display: none;
+  }
+
+  .bq-author::before {
+    content: '— ';
+  }
+
+  .fading .bq-text,
+  .fading .bq-author {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+</style>

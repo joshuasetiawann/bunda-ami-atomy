@@ -1,0 +1,104 @@
+---
+import { profile } from '../../data/profile';
+import Icon from '../Icon.astro';
+
+const { about } = profile;
+---
+
+<section class="sec about" id="tentang">
+  <div class="container about-grid">
+    <div class="about-copy reveal">
+      <div class="sec-head">
+        <p class="eyebrow">{about.eyebrow}</p>
+        <h2 class="sec-title">{about.title}</h2>
+      </div>
+      {about.paragraphs.map((p) => <p class="about-p">{p}</p>)}
+    </div>
+
+    <aside class="values reveal">
+      <p class="values-label">Nilai yang dipegang</p>
+      <ul class="values-list">
+        {
+          about.values.map((v) => (
+            <li>
+              <span class="tick"><Icon name="check" size={15} /></span>
+              {v}
+            </li>
+          ))
+        }
+      </ul>
+    </aside>
+  </div>
+</section>
+
+<style>
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1.12fr 0.88fr;
+    gap: clamp(32px, 5vw, 64px);
+    align-items: start;
+  }
+
+  .about-p {
+    margin-top: 18px;
+    font-size: 1.04rem;
+    line-height: 1.78;
+    color: var(--text);
+    max-width: 60ch;
+  }
+
+  .values {
+    position: relative;
+    padding: 30px 28px;
+    border-radius: var(--r-lg);
+    background: linear-gradient(165deg, #fff, var(--mist));
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-md);
+    top: 8px;
+  }
+
+  .values-label {
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--azure-deep);
+    margin-bottom: 18px;
+  }
+
+  .values-list {
+    list-style: none;
+    display: grid;
+    gap: 16px;
+  }
+
+  .values-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.45;
+    color: var(--ink-2);
+  }
+
+  .tick {
+    flex: 0 0 26px;
+    width: 26px;
+    height: 26px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: var(--azure-deep);
+    background: color-mix(in srgb, var(--gold) 26%, white);
+  }
+
+  @media (max-width: 860px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
+    .values {
+      top: 0;
+    }
+  }
+</style>

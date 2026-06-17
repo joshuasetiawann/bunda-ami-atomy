@@ -1,0 +1,95 @@
+---
+import { profile } from '../../data/profile';
+
+const { pencapaian } = profile;
+---
+
+<section class="sec-sm ach" id="pencapaian">
+  <div class="container">
+    <div class="sec-head center reveal">
+      <p class="eyebrow">{pencapaian.eyebrow}</p>
+      <h2 class="sec-title">{pencapaian.title}</h2>
+    </div>
+
+    <div class="ach-grid">
+      {
+        pencapaian.stats.map((s, i) => (
+          <div class="ach-card reveal" style={`transition-delay:${i * 80}ms`}>
+            <strong class="ach-value font-display">{s.value}</strong>
+            <span class="ach-label">{s.label}</span>
+            <span class="ach-desc">{s.desc}</span>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .ach-grid {
+    margin-top: clamp(32px, 5vw, 52px);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+
+  .ach-card {
+    position: relative;
+    padding: 30px 24px;
+    border-radius: var(--r-lg);
+    background: var(--glass-strong);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-sm);
+    text-align: center;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease,
+      opacity 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .ach-card::before {
+    content: '';
+    position: absolute;
+    inset: 0 0 auto 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--azure), var(--sky), var(--gold));
+  }
+
+  .ach-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+  }
+
+  .ach-value {
+    display: block;
+    font-size: clamp(2.2rem, 5vw, 2.9rem);
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--azure-deep), var(--sky));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .ach-label {
+    display: block;
+    margin-top: 12px;
+    font-size: 0.92rem;
+    font-weight: 800;
+    color: var(--ink);
+  }
+
+  .ach-desc {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.82rem;
+    line-height: 1.45;
+    color: var(--muted);
+  }
+
+  @media (max-width: 760px) {
+    .ach-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+</style>
