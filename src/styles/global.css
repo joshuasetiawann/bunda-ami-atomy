@@ -27,8 +27,9 @@
   --on-dark-soft: rgba(255, 255, 255, 0.66);
 
   /* ── Garis & permukaan ── */
-  --line: rgba(71, 6, 6, 0.1);
-  --line-strong: rgba(71, 6, 6, 0.16);
+  --line: rgba(71, 6, 6, 0.09);
+  --line-strong: rgba(71, 6, 6, 0.14);
+  --paper: #fffaf7;
   --glass: rgba(255, 255, 255, 0.72);
   --glass-strong: rgba(255, 255, 255, 0.86);
 
@@ -50,7 +51,8 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
   /* ── Layout ── */
-  --container: 1120px;
+  --container: 1080px;
+  --narrow: 760px;
   --gutter: clamp(20px, 5vw, 56px);
 }
 
@@ -73,9 +75,27 @@ body {
   font-size: 16px;
   line-height: 1.6;
   color: var(--text);
-  background: var(--mist);
+  background: var(--paper);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/* Linktree: kartu tunggal di tengah layar, latar gradien hangat */
+body.page-linktree {
+  display: grid;
+  place-items: center;
+  padding: 44px 20px;
+  background: radial-gradient(
+    130% 100% at 50% 0%,
+    #fdf1ec 0%,
+    #f4e8e2 52%,
+    #eee2dc 100%
+  );
+}
+
+/* Landing profil: latar kertas polos */
+body.page-landing {
+  background: var(--paper);
 }
 
 a {
@@ -111,7 +131,7 @@ svg {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 700;
   letter-spacing: 0.18em;
   text-transform: uppercase;
@@ -120,7 +140,7 @@ svg {
 
 .eyebrow::before {
   content: '';
-  width: 26px;
+  width: 24px;
   height: 1.5px;
   background: linear-gradient(90deg, var(--gold), transparent);
 }
@@ -167,20 +187,18 @@ svg {
 
 .btn-ghost {
   color: var(--ink-2);
-  background: var(--glass-strong);
+  background: transparent;
   border-color: var(--line-strong);
-  box-shadow: var(--shadow-sm);
 }
 
 .btn-ghost:hover {
   transform: translateY(-3px);
   border-color: rgba(225, 29, 42, 0.4);
-  box-shadow: var(--shadow-md);
 }
 
 /* ── Primitif section landing ── */
 .sec {
-  padding: clamp(64px, 11vw, 122px) 0;
+  padding: clamp(56px, 10vw, 110px) 0;
 }
 
 .sec-sm {
@@ -188,7 +206,7 @@ svg {
 }
 
 .sec-head {
-  max-width: 720px;
+  max-width: var(--narrow);
 }
 
 .sec-head.center {
@@ -208,9 +226,9 @@ svg {
   margin-top: 16px;
   font-family: var(--font-display);
   font-optical-sizing: auto;
-  font-weight: 600;
-  font-size: clamp(1.9rem, 4.6vw, 3rem);
-  line-height: 1.08;
+  font-weight: 500;
+  font-size: clamp(1.9rem, 4.6vw, 2.9rem);
+  line-height: 1.1;
   letter-spacing: -0.02em;
   color: var(--ink);
 }
@@ -227,62 +245,10 @@ svg {
   margin-inline: auto;
 }
 
-/* ── Aurora (cahaya ambient di latar) ── */
-.aurora {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  background:
-    radial-gradient(120% 90% at 50% -10%, var(--mist-2) 0%, var(--mist) 46%, #ffffff 100%);
-}
-
-.aurora span {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  opacity: 0.55;
-  will-change: transform;
-}
-
-.aurora .a1 {
-  width: 46vw;
-  height: 46vw;
-  top: -14vw;
-  left: -8vw;
-  background: radial-gradient(circle, rgba(255, 90, 50, 0.5), transparent 65%);
-  animation: drift1 22s ease-in-out infinite;
-}
-
-.aurora .a2 {
-  width: 38vw;
-  height: 38vw;
-  top: 6vw;
-  right: -10vw;
-  background: radial-gradient(circle, rgba(225, 29, 42, 0.38), transparent 65%);
-  animation: drift2 26s ease-in-out infinite;
-}
-
-.aurora .a3 {
-  width: 30vw;
-  height: 30vw;
-  bottom: -12vw;
-  left: 30vw;
-  background: radial-gradient(circle, rgba(255, 122, 24, 0.3), transparent 60%);
-  animation: drift3 30s ease-in-out infinite;
-}
-
-@keyframes drift1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(6vw, 5vw) scale(1.12); }
-}
-@keyframes drift2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(-5vw, 7vw) scale(1.08); }
-}
-@keyframes drift3 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  50% { transform: translate(4vw, -6vw) scale(1.15); }
+/* ── Garis gradien merek (strip 5px di atas halaman/kartu) ── */
+.brand-bar {
+  height: 5px;
+  background: linear-gradient(90deg, var(--azure), var(--sky), var(--gold));
 }
 
 /* ── Reveal saat scroll ──
