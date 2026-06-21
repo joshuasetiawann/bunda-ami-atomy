@@ -1,57 +1,76 @@
 ---
 import { site } from '../../data/site';
+import { profile } from '../../data/profile';
 import { withBase } from '../../utils/url';
 import Icon from '../Icon.astro';
 
 const avatarSrc = site.avatar ? withBase(site.avatar) : '';
+
+// Stat kepercayaan singkat dari slot pencapaian 2 (keluarga), 1 (tahun), 4 (rating).
+// Rating tampil sebagai angka+★ tanpa label; slot 3 (mitra) tidak tampil di kartu.
+const { stats: allStats } = profile.pencapaian;
+const trust = [
+  allStats[1] && { value: allStats[1].value, label: allStats[1].label.toLowerCase() },
+  allStats[0] && { value: allStats[0].value, label: allStats[0].label.toLowerCase() },
+  allStats[3] && { value: allStats[3].value.replace('/5', '★'), label: '' },
+].filter((s): s is { value: string; label: string } => Boolean(s));
 ---
 
 <header class="profile">
-  <div class="avatar-ring">
+  <div class="avatar-wrap">
     <div class="avatar">
       {
         avatarSrc ? (
-          <img src={avatarSrc} alt={`Foto ${site.name}`} width="120" height="120" />
+          <img src={avatarSrc} alt={`Foto ${site.name}`} width="96" height="96" />
         ) : (
-          <span class="initials">{site.initials}</span>
+          <span class="initials font-display">{site.initials}</span>
         )
       }
     </div>
     {
       site.verified && (
-        <span class="badge" title="Akun resmi terverifikasi">
-          <Icon name="check" size={13} />
+        <span class="badge" title="Terverifikasi">
+          <Icon name="check" size={12} />
         </span>
       )
     }
   </div>
 
   <h1 class="name font-display">{site.name}</h1>
-  <p class="role">{site.role}</p>
-  <p class="bio">{site.bio}</p>
+
+  <div class="role">
+    <span class="role-check"><Icon name="check" size={10} /></span>
+    <span>{site.role}</span>
+  </div>
+
+  {
+    trust.length > 0 && (
+      <div class="trust">
+        {trust.map((t, i) => (
+          <>
+            {i > 0 && <span class="dot" aria-hidden="true" />}
+            <span>
+              <strong>{t.value}</strong>
+              {t.label ? ` ${t.label}` : ''}
+            </span>
+          </>
+        ))}
+      </div>
+    )
+  }
 </header>
 
 <style>
   .profile {
-    text-align: center;
     display: grid;
     justify-items: center;
+    text-align: center;
   }
 
-  .avatar-ring {
+  .avatar-wrap {
     position: relative;
-    width: 116px;
-    height: 116px;
-    border-radius: 50%;
-    padding: 4px;
-    background: conic-gradient(
-      from 140deg,
-      var(--sky),
-      var(--azure),
-      var(--gold-soft),
-      var(--sky)
-    );
-    box-shadow: 0 18px 40px rgba(179, 15, 27, 0.3);
+    width: 96px;
+    height: 96px;
   }
 
   .avatar {
@@ -61,8 +80,9 @@ const avatarSrc = site.avatar ? withBase(site.avatar) : '';
     display: grid;
     place-items: center;
     overflow: hidden;
-    background: linear-gradient(150deg, #ffffff, var(--mist-2));
-    border: 4px solid var(--pearl);
+    background: linear-gradient(150deg, #fff, var(--mist-2));
+    border: 1px solid rgba(225, 29, 42, 0.25);
+    box-shadow: 0 12px 30px rgba(124, 16, 25, 0.12);
   }
 
   .avatar img {
@@ -72,53 +92,84 @@ const avatarSrc = site.avatar ? withBase(site.avatar) : '';
   }
 
   .initials {
-    font-family: var(--font-display);
-    font-size: 2.6rem;
-    font-weight: 600;
+    font-size: 2.15rem;
+    font-weight: 500;
     letter-spacing: -0.02em;
     color: var(--azure-deep);
   }
 
   .badge {
     position: absolute;
-    right: 4px;
-    bottom: 6px;
-    width: 30px;
-    height: 30px;
+    right: 0;
+    bottom: 2px;
+    width: 28px;
+    height: 28px;
     display: grid;
     place-items: center;
     border-radius: 50%;
     color: #fff;
     background: linear-gradient(135deg, var(--azure), var(--azure-deep));
-    border: 3px solid var(--pearl);
-    box-shadow: var(--shadow-sm);
+    border: 3px solid var(--paper);
+    box-shadow: 0 4px 12px rgba(179, 15, 27, 0.3);
+  }
+
+  .badge :global(svg) {
+    stroke-width: 2.6;
   }
 
   .name {
-    max-width: 16ch;
-    margin: 18px auto 0;
-    font-size: clamp(1.8rem, 7vw, 2.4rem);
-    font-weight: 600;
-    line-height: 1.12;
-    letter-spacing: -0.015em;
-    overflow-wrap: break-word;
+    margin: 22px 0 0;
+    font-size: clamp(1.7rem, 6.5vw, 2rem);
+    font-weight: 500;
+    line-height: 1.14;
+    letter-spacing: -0.01em;
     color: var(--ink);
+    text-wrap: balance;
   }
 
   .role {
-    margin-top: 8px;
-    font-size: 0.82rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 12px;
+    font-size: 0.72rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--azure-deep);
+    color: var(--muted);
   }
 
-  .bio {
-    max-width: 34ch;
-    margin: 14px auto 0;
-    font-size: 0.97rem;
-    line-height: 1.6;
-    color: var(--muted);
+  .role-check {
+    width: 18px;
+    height: 18px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    color: #fff;
+    background: var(--azure);
+  }
+
+  .role-check :global(svg) {
+    stroke-width: 2.8;
+  }
+
+  .trust {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 16px;
+    font-size: 0.8rem;
+    color: var(--ink-2);
+  }
+
+  .trust strong {
+    font-weight: 700;
+  }
+
+  .dot {
+    width: 3px;
+    height: 3px;
+    border-radius: 50%;
+    background: var(--gold);
   }
 </style>

@@ -1,39 +1,33 @@
 ---
 import { quotes } from '../../data/quotes';
-import Icon from '../Icon.astro';
 
 const first = quotes[0] ?? { text: '', author: '' };
 ---
 
-<figure class="quote-card" aria-live="polite">
-  <span class="qmark"><Icon name="quote" size={42} /></span>
-  <blockquote class="q-text font-display" id="q-text">{first.text}</blockquote>
+<figure class="quote">
+  <blockquote class="q-text font-display" id="q-text">“{first.text}”</blockquote>
   <figcaption class="q-author" id="q-author" data-empty={first.author ? 'false' : 'true'}>
     {first.author}
   </figcaption>
-  <div class="q-dots" id="q-dots" aria-hidden="true">
-    {quotes.map((_, i) => <span class:list={['dot', { on: i === 0 }]}></span>)}
-  </div>
 </figure>
 
 <script define:vars={{ quotes }}>
   const elText = document.getElementById('q-text');
   const elAuthor = document.getElementById('q-author');
-  const dots = Array.from(document.querySelectorAll('#q-dots .dot'));
   if (elText && quotes.length > 1) {
     let i = 0;
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const fig = elText.closest('.quote-card');
+    const fig = elText.closest('.quote');
 
     const show = (n) => {
       const q = quotes[n];
-      elText.textContent = q.text;
+      elText.textContent = `“${q.text}”`;
       elAuthor.textContent = q.author || '';
       elAuthor.dataset.empty = q.author ? 'false' : 'true';
-      dots.forEach((d, k) => d.classList.toggle('on', k === n));
     };
 
     setInterval(() => {
+      if (document.hidden) return;
       i = (i + 1) % quotes.length;
       if (reduce) {
         show(i);
@@ -43,70 +37,34 @@ const first = quotes[0] ?? { text: '', author: '' };
       setTimeout(() => {
         show(i);
         fig.classList.remove('fading');
-      }, 420);
+      }, 450);
     }, 6000);
   }
 </script>
 
 <style>
-  .quote-card {
-    position: relative;
-    margin: 0;
-    padding: 30px 26px 26px;
-    border-radius: var(--r-lg);
-    background:
-      linear-gradient(165deg, rgba(255, 255, 255, 0.9), rgba(233, 245, 252, 0.78));
-    border: 1px solid rgba(255, 255, 255, 0.8);
-    box-shadow: var(--shadow-md);
-    overflow: hidden;
+  .quote {
+    margin: 20px auto 0;
+    max-width: 34ch;
     text-align: center;
-  }
-
-  /* halo cahaya hangat di belakang quote */
-  .quote-card::before {
-    content: '';
-    position: absolute;
-    top: -40%;
-    left: 50%;
-    width: 70%;
-    height: 120%;
-    transform: translateX(-50%);
-    background: radial-gradient(
-      circle,
-      rgba(255, 122, 24, 0.22),
-      transparent 60%
-    );
-    pointer-events: none;
-  }
-
-  .qmark {
-    position: relative;
-    display: inline-grid;
-    place-items: center;
-    color: var(--gold);
-    margin-bottom: 8px;
-    filter: drop-shadow(0 4px 10px rgba(255, 122, 24, 0.42));
   }
 
   .q-text,
   .q-author {
-    position: relative;
-    transition: opacity 0.42s ease, transform 0.42s ease;
+    transition: opacity 0.45s ease, transform 0.45s ease;
   }
 
   .q-text {
-    font-size: clamp(1.15rem, 4.5vw, 1.4rem);
     font-style: italic;
-    font-weight: 500;
-    line-height: 1.45;
+    font-size: 1.04rem;
+    font-weight: 400;
+    line-height: 1.5;
     color: var(--ink-2);
-    letter-spacing: -0.01em;
   }
 
   .q-author {
-    margin-top: 14px;
-    font-family: var(--font-sans);
-    font-size: 0.78rem;
+    margin-top: 9px;
+    font-size: 0.7rem;
     font-weight: 700;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -124,27 +82,6 @@ const first = quotes[0] ?? { text: '', author: '' };
   .fading .q-text,
   .fading .q-author {
     opacity: 0;
-    transform: translateY(8px);
-  }
-
-  .q-dots {
-    display: flex;
-    justify-content: center;
-    gap: 6px;
-    margin-top: 20px;
-  }
-
-  .dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--line-strong);
-    transition: width 0.3s ease, background 0.3s ease;
-  }
-
-  .dot.on {
-    width: 18px;
-    border-radius: 4px;
-    background: linear-gradient(90deg, var(--azure), var(--sky));
+    transform: translateY(6px);
   }
 </style>
