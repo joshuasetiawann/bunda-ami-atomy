@@ -28,7 +28,7 @@ export interface LinkItem {
 export const links: LinkItem[] = [
   {
     id: 'whatsapp',
-    title: 'Konsultasi Bunda Ami',
+    title: 'Konsultasi Si Batu Kali Menjadi Berlian',
     desc: 'Tanya produk, belanja, atau daftar member — dibalas langsung',
     href: '#ganti-link-whatsapp', // contoh: https://wa.me/628123456789
     icon: 'whatsapp',
@@ -37,11 +37,11 @@ export const links: LinkItem[] = [
   },
   {
     id: 'profil',
-    title: 'Profil Lengkap Bunda Ami',
-    desc: 'Kenali sosok, visi, perjalanan & kontribusi Bunda Ami',
+    title: 'Profil Lengkap Si Batu Kali Menjadi Berlian',
+    desc: 'Kenali sosok, visi, perjalanan & kontribusi Si Batu Kali Menjadi Berlian',
     href: '/profil',
     icon: 'globe',
-    accent: '#0098D8',
+    accent: '#E11D2A',
     featured: true,
     internal: true,
   },
@@ -56,7 +56,7 @@ export const links: LinkItem[] = [
   {
     id: 'facebook',
     title: 'Facebook',
-    desc: 'Cerita, update, dan informasi Bunda Ami',
+    desc: 'Cerita, update, dan informasi Si Batu Kali Menjadi Berlian',
     href: '#ganti-link-facebook', // contoh: https://facebook.com/namaakun
     icon: 'facebook',
     accent: '#1877F2',
@@ -65,7 +65,7 @@ export const links: LinkItem[] = [
     id: 'instagram',
     title: 'Instagram',
     desc: 'Konten singkat, tips, dan aktivitas harian',
-    href: '#ganti-link-instagram', // contoh: https://instagram.com/namaakun
+    href: 'https://www.instagram.com/sibatukalimenjadiberlian',
     icon: 'instagram',
     accent: '#E1306C',
   },
@@ -73,7 +73,15 @@ export const links: LinkItem[] = [
     id: 'tiktok',
     title: 'TikTok',
     desc: 'Video ringan seputar Atomy dan keluarga',
-    href: '#ganti-link-tiktok', // contoh: https://tiktok.com/@namaakun
+    href: 'https://www.tiktok.com/@sibatukalimenjadiberlian',
+    icon: 'tiktok',
+    accent: '#111111',
+  },
+  {
+    id: 'tiktok-2',
+    title: 'TikTok (akun kedua)',
+    desc: 'Akun TikTok cadangan Si Batu Kali Menjadi Berlian',
+    href: 'https://www.tiktok.com/@sibatukalijadiberlian',
     icon: 'tiktok',
     accent: '#111111',
   },

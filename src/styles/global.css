@@ -1,39 +1,42 @@
 /* ══════════════════════════════════════════════════════════════════════════
    BUNDA AMI · DESIGN SYSTEM
-   Palet biru-putih premium dengan aksen hangat champagne-gold.
+   Palet merah membara penuh semangat dengan aksen ember-oranye yang hangat.
    Tipografi: Fraunces (display serif) + Plus Jakarta Sans (body).
+
+   Catatan: nama variabel (--azure, --sky, --gold) dipertahankan agar 18 file
+   yang mewarisinya tidak perlu diubah. Nilainya kini merah/api, bukan biru.
    ══════════════════════════════════════════════════════════════════════════ */
 
 :root {
   /* ── Warna inti ── */
-  --ink: #072a40;          /* navy paling dalam — judul, teks tegas */
-  --ink-2: #0d3f5c;        /* navy sekunder */
-  --azure: #0098d8;        /* biru utama (brand) */
-  --azure-deep: #0072ad;   /* biru lebih dalam untuk gradient */
-  --sky: #3fc6f2;          /* biru cerah — highlight & cahaya */
-  --mist: #eff8fd;         /* latar lembut */
-  --mist-2: #e1f1fb;       /* latar lembut sekunder */
-  --gold: #e4c079;         /* aksen hangat (dipakai HEMAT) */
-  --gold-soft: #f4e6c6;    /* aksen hangat lembut */
+  --ink: #470606;          /* oxblood paling dalam — judul, teks tegas */
+  --ink-2: #7c1019;        /* merah-marun sekunder */
+  --azure: #e11d2a;        /* merah api utama (brand) */
+  --azure-deep: #b30f1b;   /* merah lebih dalam untuk gradient */
+  --sky: #ff5a32;          /* nyala api / bara cerah — highlight & cahaya */
+  --mist: #fff5f2;         /* latar lembut bersemu hangat */
+  --mist-2: #ffe5de;       /* latar lembut sekunder */
+  --gold: #ff7a18;         /* aksen ember-oranye hangat (dipakai HEMAT) */
+  --gold-soft: #ffd9b8;    /* aksen ember lembut */
   --pearl: #ffffff;
 
   /* ── Teks ── */
-  --text: #2a4d60;         /* teks isi */
-  --muted: #5f7a8a;        /* teks redup */
+  --text: #522222;         /* teks isi (cokelat-merah pekat) */
+  --muted: #95584e;        /* teks redup hangat */
   --on-dark: rgba(255, 255, 255, 0.92);
   --on-dark-soft: rgba(255, 255, 255, 0.66);
 
   /* ── Garis & permukaan ── */
-  --line: rgba(7, 42, 64, 0.1);
-  --line-strong: rgba(7, 42, 64, 0.16);
+  --line: rgba(71, 6, 6, 0.1);
+  --line-strong: rgba(71, 6, 6, 0.16);
   --glass: rgba(255, 255, 255, 0.72);
   --glass-strong: rgba(255, 255, 255, 0.86);
 
-  /* ── Bayangan ── */
-  --shadow-sm: 0 4px 14px rgba(7, 50, 75, 0.06);
-  --shadow-md: 0 16px 40px rgba(7, 50, 75, 0.1);
-  --shadow-lg: 0 30px 70px rgba(7, 50, 75, 0.16);
-  --shadow-glow: 0 20px 50px rgba(0, 152, 216, 0.28);
+  /* ── Bayangan (bersemu merah) ── */
+  --shadow-sm: 0 4px 14px rgba(124, 16, 25, 0.08);
+  --shadow-md: 0 16px 40px rgba(124, 16, 25, 0.13);
+  --shadow-lg: 0 30px 70px rgba(124, 16, 25, 0.2);
+  --shadow-glow: 0 20px 50px rgba(225, 29, 42, 0.32);
 
   /* ── Radius ── */
   --r-sm: 14px;
@@ -159,7 +162,7 @@ svg {
 
 .btn-primary:hover {
   transform: translateY(-3px);
-  box-shadow: 0 26px 60px rgba(0, 152, 216, 0.36);
+  box-shadow: 0 26px 60px rgba(225, 29, 42, 0.42);
 }
 
 .btn-ghost {
@@ -171,7 +174,7 @@ svg {
 
 .btn-ghost:hover {
   transform: translateY(-3px);
-  border-color: rgba(0, 152, 216, 0.4);
+  border-color: rgba(225, 29, 42, 0.4);
   box-shadow: var(--shadow-md);
 }
 
@@ -247,7 +250,7 @@ svg {
   height: 46vw;
   top: -14vw;
   left: -8vw;
-  background: radial-gradient(circle, rgba(63, 198, 242, 0.55), transparent 65%);
+  background: radial-gradient(circle, rgba(255, 90, 50, 0.5), transparent 65%);
   animation: drift1 22s ease-in-out infinite;
 }
 
@@ -256,7 +259,7 @@ svg {
   height: 38vw;
   top: 6vw;
   right: -10vw;
-  background: radial-gradient(circle, rgba(0, 152, 216, 0.4), transparent 65%);
+  background: radial-gradient(circle, rgba(225, 29, 42, 0.38), transparent 65%);
   animation: drift2 26s ease-in-out infinite;
 }
 
@@ -265,7 +268,7 @@ svg {
   height: 30vw;
   bottom: -12vw;
   left: 30vw;
-  background: radial-gradient(circle, rgba(228, 192, 121, 0.3), transparent 60%);
+  background: radial-gradient(circle, rgba(255, 122, 24, 0.3), transparent 60%);
   animation: drift3 30s ease-in-out infinite;
 }
 

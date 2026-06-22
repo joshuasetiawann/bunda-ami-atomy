@@ -2,7 +2,7 @@
  * ════════════════════════════════════════════════════════════════════════
  *  ISI LANDING PAGE  ·  /profil
  *  Semua teks di bawah ini adalah CONTOH (placeholder) yang aman dipakai.
- *  Silakan ganti dengan cerita & data asli Bunda Ami kapan saja.
+ *  Silakan ganti dengan cerita & data asli Si Batu Kali Menjadi Berlian kapan saja.
  *  Struktur (judul section) tidak perlu diubah — cukup isi teksnya.
  * ════════════════════════════════════════════════════════════════════════
  */
@@ -30,20 +30,20 @@ export const profile = {
   /** ── HERO ──────────────────────────────────────────────────────────── */
   hero: {
     eyebrow: 'Pendamping Produk & Member Atomy',
-    title: 'Mengenal Bunda Ami',
+    title: 'Mengenal Si Batu Kali Menjadi Berlian',
     tagline:
       'Sosok ibu yang percaya bahwa hidup sehat dan berdaya adalah hak setiap keluarga.',
     intro:
-      'Selama bertahun-tahun, Bunda Ami menemani keluarga Indonesia menemukan produk kesehatan terbaik sekaligus peluang untuk tumbuh. Halaman ini menceritakan siapa beliau, apa yang diperjuangkan, dan jejak yang sudah ditinggalkan.',
+      'Selama bertahun-tahun, Si Batu Kali Menjadi Berlian menemani keluarga Indonesia menemukan produk kesehatan terbaik sekaligus peluang untuk tumbuh. Halaman ini menceritakan siapa beliau, apa yang diperjuangkan, dan jejak yang sudah ditinggalkan.',
   },
 
   /** ── TENTANG / SIAPA BUNDA AMI ─────────────────────────────────────── */
   about: {
-    eyebrow: 'Siapa Bunda Ami',
+    eyebrow: 'Siapa Si Batu Kali Menjadi Berlian',
     title: 'Sosok di balik sebuah nama yang dipercaya',
     paragraphs: [
-      'Bunda Ami adalah seorang ibu sekaligus pendamping produk yang memulai perjalanannya dari keinginan sederhana: membuat keluarganya hidup lebih sehat. Dari dapur dan ruang keluarga, kebiasaan baik itu menular ke tetangga, sahabat, lalu ke ratusan keluarga lain.',
-      'Bersama Atomy, beliau menemukan cara untuk menggabungkan dua hal yang dicintainya — merawat kesehatan keluarga dan memberdayakan sesama ibu untuk berdaya secara ekonomi. (Ganti paragraf ini dengan kisah asli Bunda Ami.)',
+      'Si Batu Kali Menjadi Berlian adalah seorang ibu sekaligus pendamping produk yang memulai perjalanannya dari keinginan sederhana: membuat keluarganya hidup lebih sehat. Dari dapur dan ruang keluarga, kebiasaan baik itu menular ke tetangga, sahabat, lalu ke ratusan keluarga lain.',
+      'Bersama Atomy, beliau menemukan cara untuk menggabungkan dua hal yang dicintainya — merawat kesehatan keluarga dan memberdayakan sesama ibu untuk berdaya secara ekonomi. (Ganti paragraf ini dengan kisah asli Si Batu Kali Menjadi Berlian.)',
     ],
     values: [
       'Tulus mendampingi, bukan sekadar menjual',
@@ -70,7 +70,7 @@ export const profile = {
   pencapaian: {
     eyebrow: 'Jejak Perjalanan',
     title: 'Pencapaian yang lahir dari ketulusan',
-    note: 'Angka di bawah ini adalah contoh. Silakan sesuaikan dengan pencapaian asli Bunda Ami.',
+    note: 'Angka di bawah ini adalah contoh. Silakan sesuaikan dengan pencapaian asli Si Batu Kali Menjadi Berlian.',
     stats: [
       { value: '10+', label: 'Tahun', desc: 'mendampingi keluarga hidup sehat' },
       { value: '500+', label: 'Keluarga', desc: 'terbantu menemukan pola sehat' },
@@ -92,7 +92,7 @@ export const profile = {
       {
         icon: 'users',
         title: 'Komunitas & Pendampingan',
-        desc: 'Ruang untuk bertanya, berbagi, dan saling menyemangati — Bunda Ami mendampingi langkah demi langkah.',
+        desc: 'Ruang untuk bertanya, berbagi, dan saling menyemangati — Si Batu Kali Menjadi Berlian mendampingi langkah demi langkah.',
       },
       {
         icon: 'video',
@@ -112,7 +112,7 @@ export const profile = {
     eyebrow: 'Untuk Sekitar',
     title: 'Kontribusi yang melampaui penjualan',
     intro:
-      'Bagi Bunda Ami, sukses sejati diukur dari seberapa banyak orang yang ikut terangkat. (Ganti dengan kegiatan nyata Bunda Ami.)',
+      'Bagi Si Batu Kali Menjadi Berlian, sukses sejati diukur dari seberapa banyak orang yang ikut terangkat. (Ganti dengan kegiatan nyata Si Batu Kali Menjadi Berlian.)',
     items: [
       {
         icon: 'heart',
@@ -136,7 +136,7 @@ export const profile = {
   cerita: {
     eyebrow: 'Cerita Bunda',
     title: 'Perjalanan, babak demi babak',
-    note: 'Ini kerangka cerita. Isi setiap babak dengan kisah asli Bunda Ami.',
+    note: 'Ini kerangka cerita. Isi setiap babak dengan kisah asli Si Batu Kali Menjadi Berlian.',
     milestones: [
       {
         marker: 'Awal Mula',

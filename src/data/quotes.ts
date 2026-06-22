@@ -14,7 +14,7 @@ export interface Quote {
 export const quotes: Quote[] = [
   {
     text: 'Kesehatan adalah investasi terbaik yang bisa kita berikan untuk keluarga.',
-    author: 'Bunda Ami',
+    author: 'Si Batu Kali Menjadi Berlian',
   },
   {
     text: 'Mimpi besar dimulai dari satu langkah kecil yang dilakukan hari ini.',
