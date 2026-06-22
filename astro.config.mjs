@@ -21,9 +21,23 @@ const isDev =
   ['dev', 'start'].includes(process.env.npm_lifecycle_event ?? '') ||
   process.argv.includes('dev');
 
+// Deteksi build di Vercel. Vercel selalu meng-host situs di ROOT domain
+// (mis. namaproyek.vercel.app/), JADI base HARUS '/'. Kalau tetap pakai
+// '/bunda-ami-atomy', semua CSS/asset/link akan 404 dan halaman tampil polos.
+const isVercel = !!process.env.VERCEL;
+
+// URL produksi Vercel (tanpa protokol) untuk canonical & preview saat di-share.
+const vercelHost =
+  process.env.VERCEL_PROJECT_PRODUCTION_URL || process.env.VERCEL_URL;
+
 export default defineConfig({
-  site: 'https://joshuasetiawann.github.io',
-  base: isDev ? '/' : PROD_BASE,
+  // Vercel pakai domain-nya sendiri; selain itu tetap GitHub Pages.
+  site:
+    isVercel && vercelHost
+      ? `https://${vercelHost}`
+      : 'https://joshuasetiawann.github.io',
+  // GitHub Pages butuh sub-path '/bunda-ami-atomy'; Vercel & dev pakai root '/'.
+  base: isDev || isVercel ? '/' : PROD_BASE,
   trailingSlash: 'ignore',
   build: {
     format: 'directory',
