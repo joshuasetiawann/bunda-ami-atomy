@@ -5,10 +5,10 @@ import Icon from '../Icon.astro';
 const first = quotes[0] ?? { text: '', author: '' };
 ---
 
-<section class="sec-sm quotes">
-  <div class="container">
-    <figure class="big-quote reveal" aria-live="polite">
-      <span class="bq-mark"><Icon name="quote" size={64} /></span>
+<section class="quotes">
+  <div class="quotes-in">
+    <figure class="big-quote reveal">
+      <span class="bq-mark"><Icon name="quote" size={52} /></span>
       <blockquote class="bq-text font-display" id="bq-text">{first.text}</blockquote>
       <figcaption
         class="bq-author"
@@ -29,6 +29,7 @@ const first = quotes[0] ?? { text: '', author: '' };
     const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const fig = t.closest('.big-quote');
     setInterval(() => {
+      if (document.hidden) return;
       i = (i + 1) % quotes.length;
       const apply = () => {
         t.textContent = quotes[i].text;
@@ -40,36 +41,41 @@ const first = quotes[0] ?? { text: '', author: '' };
       setTimeout(() => {
         apply();
         fig.classList.remove('fading');
-      }, 420);
+      }, 450);
     }, 6500);
   }
 </script>
 
 <style>
-  .big-quote {
-    position: relative;
-    max-width: 880px;
+  .quotes {
+    padding: clamp(60px, 11vw, 120px) 0;
+  }
+
+  .quotes-in {
+    width: min(100% - var(--gutter) * 2, var(--narrow));
     margin-inline: auto;
     text-align: center;
-    padding: clamp(36px, 6vw, 64px) clamp(20px, 4vw, 40px);
+  }
+
+  .big-quote {
+    margin: 0;
   }
 
   .bq-mark {
     display: inline-grid;
     place-items: center;
     color: var(--gold);
-    opacity: 0.9;
-    filter: drop-shadow(0 8px 18px rgba(255, 122, 24, 0.38));
+    opacity: 0.85;
   }
 
   .bq-text,
   .bq-author {
-    transition: opacity 0.42s ease, transform 0.42s ease;
+    transition: opacity 0.45s ease, transform 0.45s ease;
   }
 
   .bq-text {
-    margin-top: 18px;
-    font-size: clamp(1.5rem, 4vw, 2.4rem);
+    margin: 16px 0 0;
+    font-size: clamp(1.5rem, 4vw, 2.3rem);
     font-style: italic;
     font-weight: 500;
     line-height: 1.4;
@@ -78,9 +84,9 @@ const first = quotes[0] ?? { text: '', author: '' };
   }
 
   .bq-author {
-    margin-top: 22px;
+    margin-top: 20px;
     font-family: var(--font-sans);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;

@@ -16,9 +16,7 @@ const waHref = wa ? wa.href : '#';
     </a>
 
     <nav class="nav-actions">
-      <a class="nav-link" href={withBase('/')}>
-        <Icon name="arrow-up" size={16} /> Linktree
-      </a>
+      <a class="nav-link" href={withBase('/')}>Semua Tautan</a>
       <a class="nav-cta" href={waHref} target="_blank" rel="noopener noreferrer">
         <Icon name="whatsapp" size={16} /> Konsultasi
       </a>
@@ -38,15 +36,16 @@ const waHref = wa ? wa.href : '#';
     position: sticky;
     top: 0;
     z-index: 50;
-    padding: 14px 0;
+    padding: 16px 0;
     transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
   }
 
   .nav.scrolled {
-    padding: 9px 0;
-    background: rgba(255, 255, 255, 0.78);
+    padding: 11px 0;
+    background: rgba(255, 250, 247, 0.82);
     backdrop-filter: blur(14px);
-    box-shadow: 0 1px 0 var(--line), var(--shadow-sm);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 1px 0 rgba(71, 6, 6, 0.08);
   }
 
   .nav-in {
@@ -67,40 +66,40 @@ const waHref = wa ? wa.href : '#';
     height: 38px;
     display: grid;
     place-items: center;
-    border-radius: 11px;
-    font-size: 1rem;
-    font-weight: 600;
-    color: #fff;
-    background: linear-gradient(135deg, var(--azure), var(--azure-deep));
-    box-shadow: var(--shadow-sm);
+    border-radius: 50%;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--azure-deep);
+    background: linear-gradient(150deg, #fff, var(--mist-2));
+    border: 1px solid rgba(225, 29, 42, 0.25);
   }
 
   .brand-name {
-    font-size: 1.18rem;
-    font-weight: 600;
+    font-size: 1.12rem;
+    font-weight: 500;
     color: var(--ink);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.005em;
   }
 
   .nav-actions {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 6px;
   }
 
   .nav-link,
   .nav-cta {
     display: inline-flex;
     align-items: center;
-    gap: 7px;
-    padding: 9px 16px;
+    gap: 8px;
     border-radius: var(--r-full);
     font-size: 0.86rem;
-    font-weight: 700;
-    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    transition: transform 0.25s ease, color 0.2s ease;
   }
 
   .nav-link {
+    padding: 9px 15px;
+    font-weight: 600;
     color: var(--ink-2);
   }
 
@@ -109,9 +108,11 @@ const waHref = wa ? wa.href : '#';
   }
 
   .nav-cta {
+    padding: 10px 18px;
+    font-weight: 700;
     color: #fff;
     background: linear-gradient(135deg, var(--azure), var(--azure-deep));
-    box-shadow: var(--shadow-glow);
+    box-shadow: 0 10px 26px rgba(225, 29, 42, 0.28);
   }
 
   .nav-cta:hover {
@@ -121,10 +122,6 @@ const waHref = wa ? wa.href : '#';
   @media (max-width: 540px) {
     .brand-name {
       display: none;
-    }
-    .nav-link span,
-    .nav-link {
-      font-size: 0.82rem;
     }
   }
 </style>

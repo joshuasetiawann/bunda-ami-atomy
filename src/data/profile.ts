@@ -31,10 +31,9 @@ export const profile = {
   hero: {
     eyebrow: 'Pendamping Produk & Member Atomy',
     title: 'Mengenal Si Batu Kali Menjadi Berlian',
-    tagline:
-      'Sosok ibu yang percaya bahwa hidup sehat dan berdaya adalah hak setiap keluarga.',
+    tagline: 'Hidup sehat dan berdaya adalah hak setiap keluarga.',
     intro:
-      'Selama bertahun-tahun, Si Batu Kali Menjadi Berlian menemani keluarga Indonesia menemukan produk kesehatan terbaik sekaligus peluang untuk tumbuh. Halaman ini menceritakan siapa beliau, apa yang diperjuangkan, dan jejak yang sudah ditinggalkan.',
+      'Selama lebih dari sepuluh tahun, beliau menemani keluarga Indonesia menemukan produk kesehatan terbaik sekaligus peluang untuk tumbuh. Halaman ini menceritakan siapa beliau, apa yang diperjuangkan, dan jejak yang ditinggalkan.',
   },
 
   /** ── TENTANG / SIAPA BUNDA AMI ─────────────────────────────────────── */
@@ -43,8 +42,10 @@ export const profile = {
     title: 'Sosok di balik sebuah nama yang dipercaya',
     paragraphs: [
       'Si Batu Kali Menjadi Berlian adalah seorang ibu sekaligus pendamping produk yang memulai perjalanannya dari keinginan sederhana: membuat keluarganya hidup lebih sehat. Dari dapur dan ruang keluarga, kebiasaan baik itu menular ke tetangga, sahabat, lalu ke ratusan keluarga lain.',
-      'Bersama Atomy, beliau menemukan cara untuk menggabungkan dua hal yang dicintainya — merawat kesehatan keluarga dan memberdayakan sesama ibu untuk berdaya secara ekonomi. (Ganti paragraf ini dengan kisah asli Si Batu Kali Menjadi Berlian.)',
+      'Bersama Atomy, beliau menemukan cara untuk menggabungkan dua hal yang dicintainya — merawat kesehatan keluarga dan memberdayakan sesama ibu untuk berdaya secara ekonomi.',
     ],
+    /** Catatan redup di akhir paragraf (hapus bila kisah asli sudah diisi) */
+    note: '(Ganti paragraf ini dengan kisah asli Si Batu Kali Menjadi Berlian.)',
     values: [
       'Tulus mendampingi, bukan sekadar menjual',
       'Mengutamakan kualitas dan kejujuran',
@@ -81,7 +82,7 @@ export const profile = {
 
   /** ── APA YANG BUNDA PUNYA / TAWARKAN ───────────────────────────────── */
   offerings: {
-    eyebrow: 'Apa yang Bunda Tawarkan',
+    eyebrow: 'Apa yang Ditawarkan',
     title: 'Lebih dari produk — sebuah pendampingan',
     items: [
       {
@@ -111,8 +112,7 @@ export const profile = {
   kontribusi: {
     eyebrow: 'Untuk Sekitar',
     title: 'Kontribusi yang melampaui penjualan',
-    intro:
-      'Bagi Si Batu Kali Menjadi Berlian, sukses sejati diukur dari seberapa banyak orang yang ikut terangkat. (Ganti dengan kegiatan nyata Si Batu Kali Menjadi Berlian.)',
+    intro: 'Sukses sejati diukur dari seberapa banyak orang yang ikut terangkat.',
     items: [
       {
         icon: 'heart',

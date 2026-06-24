@@ -5,18 +5,16 @@ import Icon from '../Icon.astro';
 const { visiMisi } = profile;
 ---
 
-<section class="sec-sm vm">
+<section class="vm">
   <div class="container">
-    <div class="vm-panel reveal">
-      <div class="vm-glow" aria-hidden="true"></div>
-
+    <div class="vm-grid reveal">
       <div class="vm-visi">
-        <p class="vm-eyebrow"><Icon name="eye" size={16} /> {visiMisi.visiTitle}</p>
+        <p class="vm-eyebrow"><Icon name="eye" size={15} /> {visiMisi.visiTitle}</p>
         <p class="vm-statement font-display">{visiMisi.visi}</p>
       </div>
 
       <div class="vm-misi">
-        <p class="vm-eyebrow"><Icon name="target" size={16} /> {visiMisi.misiTitle}</p>
+        <p class="vm-eyebrow"><Icon name="target" size={15} /> {visiMisi.misiTitle}</p>
         <ol class="vm-list">
           {visiMisi.misi.map((m) => <li>{m}</li>)}
         </ol>
@@ -26,90 +24,70 @@ const { visiMisi } = profile;
 </section>
 
 <style>
-  .vm-panel {
-    position: relative;
+  .vm {
+    padding: clamp(20px, 3vw, 32px) 0 clamp(56px, 10vw, 110px);
+  }
+
+  .vm-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: clamp(32px, 5vw, 64px);
-    padding: clamp(36px, 6vw, 64px);
-    border-radius: var(--r-xl);
-    background: linear-gradient(140deg, #5e0a0a 0%, var(--azure-deep) 55%, #8c1418 100%);
-    box-shadow: var(--shadow-lg);
-    overflow: hidden;
-  }
-
-  .vm-glow {
-    position: absolute;
-    top: -30%;
-    right: -10%;
-    width: 50%;
-    height: 120%;
-    background: radial-gradient(circle, rgba(255, 110, 70, 0.55), transparent 60%);
-    pointer-events: none;
-  }
-
-  .vm-visi,
-  .vm-misi {
-    position: relative;
+    gap: clamp(32px, 6vw, 80px);
   }
 
   .vm-eyebrow {
     display: inline-flex;
     align-items: center;
     gap: 9px;
-    font-size: 0.78rem;
+    font-size: 0.76rem;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--gold-soft);
-    margin-bottom: 18px;
+    color: var(--azure-deep);
+    margin-bottom: 16px;
   }
 
   .vm-statement {
     font-size: clamp(1.4rem, 3vw, 2rem);
     font-style: italic;
     font-weight: 500;
-    line-height: 1.36;
+    line-height: 1.34;
     letter-spacing: -0.01em;
-    color: #fff;
+    color: var(--ink);
   }
 
   .vm-list {
     list-style: none;
     counter-reset: misi;
-    display: grid;
-    gap: 16px;
   }
 
   .vm-list li {
     counter-increment: misi;
     position: relative;
-    padding-left: 44px;
+    padding: 15px 0 15px 46px;
     font-size: 1rem;
     line-height: 1.55;
-    color: var(--on-dark);
+    color: var(--text);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .vm-list li:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
   }
 
   .vm-list li::before {
     content: counter(misi, decimal-leading-zero);
     position: absolute;
     left: 0;
-    top: -2px;
+    top: 15px;
     font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 600;
-    color: var(--gold);
-    background: rgba(255, 255, 255, 0.08);
-    border: 1px solid rgba(255, 122, 24, 0.42);
-    width: 30px;
-    height: 30px;
-    display: grid;
-    place-items: center;
-    border-radius: 9px;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--azure-deep);
   }
 
   @media (max-width: 760px) {
-    .vm-panel {
+    .vm-grid {
       grid-template-columns: 1fr;
     }
   }
