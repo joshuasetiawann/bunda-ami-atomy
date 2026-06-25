@@ -10,8 +10,8 @@ import { defineConfig } from 'astro/config';
 //  LOKAL (npm run dev): otomatis pakai base '/' supaya bisa langsung dibuka di
 //      http://localhost:4321/ tanpa kena 404.
 //
-//  Kalau nanti pakai domain sendiri (mis. bundaami.com) atau host di Netlify/
-//  Vercel di root, ubah PROD_BASE di bawah menjadi '/'.
+//  Host lain (domain sendiri, Netlify, Vercel) otomatis memakai base '/' —
+//  tidak perlu mengubah apa pun. PROD_BASE hanya dipakai build GitHub Pages.
 //  Semua link internal otomatis menyesuaikan (memakai import.meta.env.BASE_URL).
 // ───────────────────────────────────────────────────────────────────────────
 const PROD_BASE = '/bunda-ami-atomy';
