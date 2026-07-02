@@ -5,71 +5,87 @@ import Icon from '../Icon.astro';
 const { about } = profile;
 ---
 
-<section class="sec about" id="tentang">
-  <div class="container about-grid">
-    <div class="about-copy reveal">
-      <div class="sec-head">
-        <p class="eyebrow">{about.eyebrow}</p>
-        <h2 class="sec-title">{about.title}</h2>
-      </div>
-      {about.paragraphs.map((p) => <p class="about-p">{p}</p>)}
+<section class="sec" id="tentang">
+  <div class="container">
+    <div class="sec-head reveal">
+      <p class="eyebrow">{about.eyebrow}</p>
+      <h2 class="sec-title">{about.title}</h2>
     </div>
 
-    <aside class="values reveal">
-      <p class="values-label">Nilai yang dipegang</p>
-      <ul class="values-list">
+    <div class="about-grid reveal">
+      <div class="about-copy">
         {
-          about.values.map((v) => (
-            <li>
-              <span class="tick"><Icon name="check" size={15} /></span>
-              {v}
-            </li>
+          about.paragraphs.map((p, i) => (
+            <p class="about-p">
+              {p}
+              {i === about.paragraphs.length - 1 && about.note && (
+                <span class="about-note"> {about.note}</span>
+              )}
+            </p>
           ))
         }
-      </ul>
-    </aside>
+      </div>
+
+      <aside class="values">
+        <p class="values-label">Nilai yang dipegang</p>
+        <ul class="values-list">
+          {
+            about.values.map((v) => (
+              <li>
+                <span class="tick">
+                  <Icon name="check" size={12} />
+                </span>
+                {v}
+              </li>
+            ))
+          }
+        </ul>
+      </aside>
+    </div>
   </div>
 </section>
 
 <style>
   .about-grid {
+    margin-top: clamp(28px, 4vw, 44px);
     display: grid;
-    grid-template-columns: 1.12fr 0.88fr;
-    gap: clamp(32px, 5vw, 64px);
+    grid-template-columns: 1.4fr 0.9fr;
+    gap: clamp(32px, 6vw, 72px);
     align-items: start;
   }
 
   .about-p {
-    margin-top: 18px;
-    font-size: 1.04rem;
-    line-height: 1.78;
+    font-size: 1.06rem;
+    line-height: 1.8;
     color: var(--text);
     max-width: 60ch;
   }
 
+  .about-p + .about-p {
+    margin-top: 20px;
+  }
+
+  .about-note {
+    color: var(--muted);
+  }
+
   .values {
     position: relative;
-    padding: 30px 28px;
-    border-radius: var(--r-lg);
-    background: linear-gradient(165deg, #fff, var(--mist));
-    border: 1px solid var(--line);
-    box-shadow: var(--shadow-md);
-    top: 8px;
+    top: 4px;
   }
 
   .values-label {
-    font-size: 0.76rem;
+    font-size: 0.74rem;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: var(--azure-deep);
-    margin-bottom: 18px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--line);
   }
 
   .values-list {
     list-style: none;
-    display: grid;
-    gap: 16px;
   }
 
   .values-list li {
@@ -78,19 +94,30 @@ const { about } = profile;
     gap: 13px;
     font-size: 1rem;
     font-weight: 500;
-    line-height: 1.45;
+    line-height: 1.5;
     color: var(--ink-2);
+    padding: 16px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .values-list li:last-child {
+    border-bottom: none;
   }
 
   .tick {
-    flex: 0 0 26px;
-    width: 26px;
-    height: 26px;
+    flex: 0 0 22px;
+    width: 22px;
+    height: 22px;
     display: grid;
     place-items: center;
     border-radius: 50%;
-    color: var(--azure-deep);
-    background: color-mix(in srgb, var(--gold) 26%, white);
+    color: #fff;
+    background: var(--azure);
+    margin-top: 1px;
+  }
+
+  .tick :global(svg) {
+    stroke-width: 2.6;
   }
 
   @media (max-width: 860px) {

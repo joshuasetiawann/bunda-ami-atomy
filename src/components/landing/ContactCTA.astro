@@ -5,20 +5,23 @@ import Icon from '../Icon.astro';
 
 const wa = links.find((l) => l.id === 'whatsapp');
 const waHref = wa ? wa.href : '#';
-// kanal sosial untuk baris ikon (selain whatsapp & link internal)
-const socials = links.filter((l) => !l.internal && l.id !== 'whatsapp');
+// kanal sosial untuk baris ikon (selain whatsapp, link internal & akun cadangan)
+const socials = links.filter(
+  (l) => !l.internal && l.id !== 'whatsapp' && l.id !== 'tiktok-2'
+);
 ---
 
-<section class="sec cta" id="kontak">
+<section class="cta" id="kontak">
   <div class="container">
     <div class="cta-panel reveal">
-      <div class="cta-glow" aria-hidden="true"></div>
-      <p class="eyebrow cta-eyebrow">Mari terhubung</p>
+      <div class="brand-bar cta-bar" aria-hidden="true"></div>
+      <p class="cta-eyebrow">Mari Terhubung</p>
       <h2 class="cta-title font-display">
         Siap memulai hidup yang lebih sehat &amp; berdaya?
       </h2>
       <p class="cta-sub">
-        Konsultasi gratis dan tanpa kewajiban. Si Batu Kali Menjadi Berlian senang menemani langkah pertamamu.
+        Konsultasi gratis dan tanpa kewajiban. Si Batu Kali Menjadi Berlian senang
+        menemani langkah pertamamu.
       </p>
 
       <div class="cta-actions">
@@ -51,60 +54,54 @@ const socials = links.filter((l) => !l.internal && l.id !== 'whatsapp');
 </section>
 
 <style>
+  .cta {
+    padding: 0 0 clamp(60px, 10vw, 110px);
+  }
+
   .cta-panel {
     position: relative;
     text-align: center;
-    padding: clamp(44px, 7vw, 80px) clamp(24px, 5vw, 56px);
-    border-radius: var(--r-xl);
+    padding: clamp(48px, 8vw, 88px) clamp(24px, 5vw, 56px);
+    border-radius: 32px;
     background: linear-gradient(160deg, #fff, var(--mist-2));
-    border: 1px solid rgba(255, 255, 255, 0.9);
-    box-shadow: var(--shadow-lg);
+    border: 1px solid rgba(225, 29, 42, 0.14);
     overflow: hidden;
   }
 
-  .cta-glow {
+  .cta-bar {
     position: absolute;
-    inset: auto 50% -60% auto;
-    transform: translateX(50%);
-    width: 80%;
-    height: 130%;
-    background: radial-gradient(circle, rgba(225, 29, 42, 0.2), transparent 62%);
-    pointer-events: none;
+    inset: 0 0 auto 0;
   }
 
   .cta-eyebrow {
-    position: relative;
-    justify-content: center;
-  }
-
-  .cta-eyebrow::before {
-    display: none;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--azure-deep);
   }
 
   .cta-title {
-    position: relative;
-    margin-top: 16px;
-    font-size: clamp(1.8rem, 4.6vw, 2.9rem);
-    font-weight: 600;
+    margin: 16px auto 0;
+    font-size: clamp(1.8rem, 4.6vw, 2.8rem);
+    font-weight: 500;
     line-height: 1.12;
     letter-spacing: -0.02em;
     color: var(--ink);
     max-width: 18ch;
-    margin-inline: auto;
+    text-wrap: balance;
   }
 
   .cta-sub {
-    position: relative;
     margin: 18px auto 0;
-    max-width: 50ch;
+    max-width: 48ch;
     font-size: 1.04rem;
     line-height: 1.7;
     color: var(--muted);
   }
 
   .cta-actions {
-    position: relative;
-    margin-top: 32px;
+    margin-top: 30px;
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
@@ -112,27 +109,25 @@ const socials = links.filter((l) => !l.internal && l.id !== 'whatsapp');
   }
 
   .cta-socials {
-    position: relative;
-    margin-top: 30px;
+    margin-top: 28px;
     display: flex;
-    gap: 12px;
+    gap: 10px;
     justify-content: center;
   }
 
   .cta-soc {
-    width: 46px;
-    height: 46px;
+    width: 44px;
+    height: 44px;
     display: grid;
     place-items: center;
-    border-radius: 13px;
+    border-radius: 50%;
     color: var(--accent);
-    background: color-mix(in srgb, var(--accent) 12%, white);
+    background: #fff;
     border: 1px solid var(--line);
-    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    transition: transform 0.25s ease;
   }
 
   .cta-soc:hover {
     transform: translateY(-3px);
-    box-shadow: var(--shadow-md);
   }
 </style>

@@ -2,10 +2,9 @@
 import { site } from '../../data/site';
 import { withBase } from '../../utils/url';
 
-const year = '2026';
 const navItems = [
   { label: 'Tentang', href: '#tentang' },
-  { label: 'Pencapaian', href: '#pencapaian' },
+  { label: 'Tawaran', href: '#tawaran' },
   { label: 'Cerita', href: '#cerita' },
   { label: 'Kontak', href: '#kontak' },
 ];
@@ -32,10 +31,8 @@ const navItems = [
 
 <style>
   .footer {
-    margin-top: clamp(20px, 4vw, 40px);
-    padding: clamp(40px, 6vw, 60px) 0 32px;
+    padding: clamp(36px, 6vw, 56px) 0 40px;
     border-top: 1px solid var(--line);
-    background: linear-gradient(180deg, transparent, rgba(255, 229, 222, 0.5));
   }
 
   .footer-in {
@@ -47,14 +44,14 @@ const navItems = [
   }
 
   .footer-name {
-    font-size: 1.4rem;
-    font-weight: 600;
+    font-size: 1.3rem;
+    font-weight: 500;
     color: var(--ink);
   }
 
   .footer-role {
     margin-top: 4px;
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 600;
     letter-spacing: 0.06em;
     text-transform: uppercase;
@@ -71,7 +68,7 @@ const navItems = [
     font-size: 0.92rem;
     font-weight: 600;
     color: var(--muted);
-    transition: color 0.25s ease;
+    transition: color 0.2s ease;
   }
 
   .footer-nav a:hover {
@@ -79,8 +76,8 @@ const navItems = [
   }
 
   .footer-bottom {
-    margin-top: 28px;
-    padding-top: 24px;
+    margin-top: 26px;
+    padding-top: 22px;
     border-top: 1px solid var(--line);
     display: flex;
     flex-wrap: wrap;

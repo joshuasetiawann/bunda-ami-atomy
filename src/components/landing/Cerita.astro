@@ -5,7 +5,7 @@ const { cerita } = profile;
 ---
 
 <section class="sec story" id="cerita">
-  <div class="container">
+  <div class="story-in">
     <div class="sec-head center reveal">
       <p class="eyebrow">{cerita.eyebrow}</p>
       <h2 class="sec-title">{cerita.title}</h2>
@@ -14,13 +14,14 @@ const { cerita } = profile;
     <ol class="timeline">
       {
         cerita.milestones.map((m, i) => (
-          <li class="tl-item reveal" style={`transition-delay:${i * 90}ms`}>
-            <span class="tl-dot" aria-hidden="true"></span>
-            <div class="tl-content">
-              <span class="tl-marker">{m.marker}</span>
-              <h3 class="tl-title font-display">{m.title}</h3>
-              <p class="tl-desc">{m.desc}</p>
-            </div>
+          <li
+            class:list={['tl-item', 'reveal', { last: i === cerita.milestones.length - 1 }]}
+            style={`transition-delay:${i * 80}ms`}
+          >
+            <span class="tl-dot" aria-hidden="true" />
+            <span class="tl-marker">{m.marker}</span>
+            <h3 class="tl-title font-display">{m.title}</h3>
+            <p class="tl-desc">{m.desc}</p>
           </li>
         ))
       }
@@ -29,80 +30,81 @@ const { cerita } = profile;
 </section>
 
 <style>
+  .story {
+    background: var(--mist);
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+  }
+
+  .story-in {
+    width: min(100% - var(--gutter) * 2, var(--narrow));
+    margin-inline: auto;
+  }
+
+  .sec-head.center {
+    text-align: center;
+    margin-inline: auto;
+  }
+
   .timeline {
     list-style: none;
-    max-width: 760px;
-    margin: clamp(36px, 6vw, 60px) auto 0;
-    padding-left: 36px;
+    margin: clamp(36px, 6vw, 56px) auto 0;
+    padding-left: 32px;
     position: relative;
   }
 
   .timeline::before {
     content: '';
     position: absolute;
-    left: 9px;
-    top: 6px;
-    bottom: 6px;
-    width: 2px;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 1.5px;
     background: linear-gradient(180deg, var(--azure), var(--sky), var(--gold-soft));
   }
 
   .tl-item {
     position: relative;
-    padding-bottom: 38px;
+    padding: 0 0 34px 8px;
   }
 
-  .tl-item:last-child {
+  .tl-item.last {
     padding-bottom: 0;
   }
 
   .tl-dot {
     position: absolute;
-    left: -34px;
-    top: 4px;
-    width: 18px;
-    height: 18px;
+    left: -32px;
+    top: 3px;
+    width: 16px;
+    height: 16px;
     border-radius: 50%;
-    background: #fff;
-    border: 4px solid var(--azure);
-    box-shadow: 0 0 0 4px rgba(225, 29, 42, 0.14);
+    background: var(--paper);
+    border: 3px solid var(--azure);
   }
 
-  .tl-content {
-    padding: 22px 26px;
-    border-radius: var(--r-md);
-    background: var(--glass-strong);
-    border: 1px solid var(--line);
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  .tl-item:hover .tl-content {
-    transform: translateX(4px);
-    box-shadow: var(--shadow-md);
+  .tl-item.last .tl-dot {
+    background: var(--azure);
+    border-color: var(--gold-soft);
   }
 
   .tl-marker {
-    display: inline-block;
-    font-size: 0.74rem;
+    font-size: 0.72rem;
     font-weight: 800;
-    letter-spacing: 0.14em;
+    letter-spacing: 0.13em;
     text-transform: uppercase;
-    color: #b53d12;
-    padding: 4px 12px;
-    border-radius: var(--r-full);
-    background: color-mix(in srgb, var(--gold) 22%, white);
+    color: #b5561a;
   }
 
   .tl-title {
-    margin-top: 12px;
+    margin-top: 8px;
     font-size: 1.3rem;
-    font-weight: 600;
+    font-weight: 500;
     color: var(--ink);
   }
 
   .tl-desc {
-    margin-top: 8px;
+    margin-top: 6px;
     font-size: 0.98rem;
     line-height: 1.65;
     color: var(--muted);
