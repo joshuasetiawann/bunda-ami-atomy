@@ -28,7 +28,7 @@ export interface LinkItem {
 export const links: LinkItem[] = [
   {
     id: 'whatsapp',
-    title: 'Konsultasi Si Batu Kali Menjadi Berlian',
+    title: 'Konsultasi via WhatsApp',
     desc: 'Tanya produk, belanja, atau daftar member — dibalas langsung',
     href: '#ganti-link-whatsapp', // contoh: https://wa.me/628123456789
     icon: 'whatsapp',
@@ -37,18 +37,17 @@ export const links: LinkItem[] = [
   },
   {
     id: 'profil',
-    title: 'Profil Lengkap Si Batu Kali Menjadi Berlian',
-    desc: 'Kenali sosok, visi, perjalanan & kontribusi Si Batu Kali Menjadi Berlian',
+    title: 'Profil Lengkap Bunda',
+    desc: 'Sosok, visi & perjalanan',
     href: '/profil',
     icon: 'globe',
-    accent: '#E11D2A',
-    featured: true,
+    accent: '#b30f1b',
     internal: true,
   },
   {
     id: 'zoom',
     title: 'Zoom Sharing Atomy',
-    desc: 'Masuk ke sesi sharing & edukasi online',
+    desc: 'Sesi sharing & edukasi online',
     href: '#ganti-link-zoom', // contoh: https://us02web.zoom.us/j/xxxx
     icon: 'zoom',
     accent: '#2D8CFF',
@@ -56,7 +55,7 @@ export const links: LinkItem[] = [
   {
     id: 'facebook',
     title: 'Facebook',
-    desc: 'Cerita, update, dan informasi Si Batu Kali Menjadi Berlian',
+    desc: 'Cerita, update & informasi',
     href: '#ganti-link-facebook', // contoh: https://facebook.com/namaakun
     icon: 'facebook',
     accent: '#1877F2',
@@ -64,7 +63,7 @@ export const links: LinkItem[] = [
   {
     id: 'instagram',
     title: 'Instagram',
-    desc: 'Konten singkat, tips, dan aktivitas harian',
+    desc: 'Tips & aktivitas harian',
     href: 'https://www.instagram.com/sibatukalimenjadiberlian',
     icon: 'instagram',
     accent: '#E1306C',
@@ -72,15 +71,15 @@ export const links: LinkItem[] = [
   {
     id: 'tiktok',
     title: 'TikTok',
-    desc: 'Video ringan seputar Atomy dan keluarga',
+    desc: 'Video ringan seputar Atomy',
     href: 'https://www.tiktok.com/@sibatukalimenjadiberlian',
     icon: 'tiktok',
     accent: '#111111',
   },
   {
     id: 'tiktok-2',
-    title: 'TikTok (akun kedua)',
-    desc: 'Akun TikTok cadangan Si Batu Kali Menjadi Berlian',
+    title: 'TikTok · Akun Kedua',
+    desc: 'Akun cadangan Bunda',
     href: 'https://www.tiktok.com/@sibatukalijadiberlian',
     icon: 'tiktok',
     accent: '#111111',

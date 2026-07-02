@@ -5,10 +5,10 @@ import Icon from '../Icon.astro';
 
 <div class="share">
   <button type="button" class="share-btn" id="share-btn" aria-label="Bagikan halaman ini">
-    <Icon name="share" size={18} />
+    <Icon name="share" size={17} />
     <span>Bagikan halaman</span>
   </button>
-  <span class="toast" id="share-toast" role="status">Link disalin ✓</span>
+  <span class="toast" id="share-toast" role="status"></span>
 </div>
 
 <script define:vars={{ shareTitle: site.name, shareText: site.seo.description }}>
@@ -22,8 +22,14 @@ import Icon from '../Icon.astro';
         return;
       }
       await navigator.clipboard.writeText(url);
-      toast?.classList.add('show');
-      setTimeout(() => toast?.classList.remove('show'), 2000);
+      if (toast) {
+        toast.textContent = 'Link disalin ✓';
+        toast.classList.add('show');
+        setTimeout(() => {
+          toast.classList.remove('show');
+          toast.textContent = '';
+        }, 2000);
+      }
     } catch {
       /* dibatalkan pengguna — abaikan */
     }
@@ -36,7 +42,6 @@ import Icon from '../Icon.astro';
     align-items: center;
     justify-content: center;
     gap: 12px;
-    flex-wrap: wrap;
   }
 
   .share-btn {
@@ -46,24 +51,23 @@ import Icon from '../Icon.astro';
     padding: 11px 20px;
     border-radius: var(--r-full);
     border: 1px solid var(--line-strong);
-    background: var(--glass-strong);
+    background: transparent;
     color: var(--ink-2);
     font-family: var(--font-sans);
-    font-size: 0.86rem;
+    font-size: 0.84rem;
     font-weight: 700;
     cursor: pointer;
-    box-shadow: var(--shadow-sm);
-    transition: transform 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+    transition: transform 0.25s ease, border-color 0.25s ease, color 0.25s ease;
   }
 
   .share-btn:hover {
     transform: translateY(-2px);
     color: var(--azure-deep);
-    box-shadow: var(--shadow-md);
+    border-color: rgba(225, 29, 42, 0.4);
   }
 
   .toast {
-    font-size: 0.8rem;
+    font-size: 0.78rem;
     font-weight: 700;
     color: var(--azure-deep);
     opacity: 0;
