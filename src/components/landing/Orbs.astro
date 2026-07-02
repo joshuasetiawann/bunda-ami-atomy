@@ -1,0 +1,15 @@
+---
+// Ornamen latar dekoratif: bola cahaya lembut ber-parallax.
+// Section pemakai wajib: position: relative; z-index: 0;
+interface Props {
+  /** varian posisi supaya tiap section tidak identik */
+  variant?: 'hero' | 'quotes' | 'cta';
+}
+const { variant = 'hero' } = Astro.props;
+---
+
+<div class:list={['orbs', `orbs-${variant}`]} aria-hidden="true">
+  <span class="orb orb-a" data-plx="0.22"></span>
+  <span class="orb orb-b" data-plx="-0.16"></span>
+  <span class="orb orb-c" data-plx="0.1"></span>
+</div>
