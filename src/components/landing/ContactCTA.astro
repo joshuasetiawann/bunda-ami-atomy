@@ -2,6 +2,7 @@
 import { links } from '../../data/links';
 import { withBase } from '../../utils/url';
 import Icon from '../Icon.astro';
+import Orbs from './Orbs.astro';
 
 const wa = links.find((l) => l.id === 'whatsapp');
 const waHref = wa ? wa.href : '#';
@@ -14,6 +15,7 @@ const socials = links.filter(
 <section class="cta" id="kontak">
   <div class="container">
     <div class="cta-panel reveal">
+      <Orbs variant="cta" />
       <div class="brand-bar cta-bar" aria-hidden="true"></div>
       <p class="cta-eyebrow">Mari Terhubung</p>
       <h2 class="cta-title font-display">
@@ -60,6 +62,7 @@ const socials = links.filter(
 
   .cta-panel {
     position: relative;
+    z-index: 0;
     text-align: center;
     padding: clamp(48px, 8vw, 88px) clamp(24px, 5vw, 56px);
     border-radius: 32px;

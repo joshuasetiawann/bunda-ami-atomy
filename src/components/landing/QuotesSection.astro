@@ -1,11 +1,13 @@
 ---
 import { quotes } from '../../data/quotes';
 import Icon from '../Icon.astro';
+import Orbs from './Orbs.astro';
 
 const first = quotes[0] ?? { text: '', author: '' };
 ---
 
 <section class="quotes">
+  <Orbs variant="quotes" />
   <div class="quotes-in">
     <figure class="big-quote reveal">
       <span class="bq-mark"><Icon name="quote" size={52} /></span>
@@ -48,6 +50,8 @@ const first = quotes[0] ?? { text: '', author: '' };
 
 <style>
   .quotes {
+    position: relative;
+    z-index: 0;
     padding: clamp(60px, 11vw, 120px) 0;
   }
 
