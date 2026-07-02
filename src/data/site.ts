@@ -11,7 +11,10 @@ export interface SiteConfig {
   name: string;
   /** Peran / titel singkat (mis. "Pendamping Produk & Member Atomy") */
   role: string;
-  /** Bio singkat di kartu linktree */
+  /**
+   * Bio singkat. Di desain saat ini tidak tampil di kartu linktree
+   * (kartu memakai kutipan bergantian); disimpan sebagai cadangan teks.
+   */
   bio: string;
   /** Tampilkan badge centang biru di sebelah nama? */
   verified: boolean;
@@ -54,7 +57,7 @@ export const site: SiteConfig = {
     title: 'Si Batu Kali Menjadi Berlian · Pendamping Produk & Member Atomy',
     description:
       'Semua kanal resmi Si Batu Kali Menjadi Berlian dalam satu halaman: konsultasi WhatsApp, Zoom sharing, Facebook, Instagram, TikTok, dan profil lengkap.',
-    ogImage: 'og-image.svg',
+    ogImage: 'og-image.png',
     locale: 'id_ID',
   },
 };

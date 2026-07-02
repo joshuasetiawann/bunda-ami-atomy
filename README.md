@@ -1,11 +1,11 @@
-# Bunda Ami · Linktree + Landing Page
+# Si Batu Kali Menjadi Berlian · Linktree + Landing Page
 
-Website resmi **Bunda Ami** (Pendamping Produk & Member Atomy) yang terdiri dari dua halaman:
+Website resmi **Si Batu Kali Menjadi Berlian** (Pendamping Produk & Member Atomy) yang terdiri dari dua halaman:
 
 | Halaman | Alamat | Isi |
 | --- | --- | --- |
-| **Linktree** | `/` | Kartu profil + tautan resmi + quotes motivasi yang berganti otomatis |
-| **Landing / Profil** | `/profil` | Cerita lengkap: siapa Bunda Ami, visi & misi, pencapaian, kontribusi, perjalanan |
+| **Linktree** | `/` | Kartu tunggal: profil + kutipan bergantian + CTA WhatsApp + daftar tautan resmi |
+| **Landing / Profil** | `/profil` | Cerita lengkap: siapa Bunda, visi & misi, pencapaian (di hero), kontribusi, perjalanan |
 
 Dibangun dengan **[Astro](https://astro.build)** — cepat, ringan, dan mudah dirawat. Semua data dipisahkan dari kode, jadi mengubah isi **tidak perlu menyentuh tampilan**.
 
@@ -40,11 +40,11 @@ href: 'https://instagram.com/bundaami',
 avatar: 'img/bunda-ami.jpg',
 ```
 
-Selama `avatar` masih kosong (`''`), tampil inisial **BA** secara otomatis.
+Selama `avatar` masih kosong (`''`), tampil inisial **SB** secara otomatis.
 
 ### Gambar preview saat link dibagikan (opsional)
 
-File `public/og-image.svg` dipakai saat link dibagikan ke WhatsApp/Facebook. Untuk hasil terbaik di semua platform, ganti dengan gambar **PNG/JPG ukuran 1200×630** lalu sesuaikan `seo.ogImage` di `site.ts`.
+File `public/og-image.png` (1200×630) dipakai saat link dibagikan ke WhatsApp/Facebook. Untuk menggantinya, taruh PNG/JPG 1200×630 baru di `public/` lalu sesuaikan `seo.ogImage` di `site.ts`.
 
 ---
 
@@ -80,7 +80,8 @@ Pages secara otomatis**. Cukup `git push` ke `main`, dan situs akan ter-publish 
 ### Pilihan B — Netlify / Vercel
 
 Hubungkan repo, set **build command** `npm run build` dan **publish directory** `dist`.
-Jika memakai domain sendiri (root), ubah `base` di [`astro.config.mjs`](astro.config.mjs) menjadi `'/'`.
+Tidak perlu mengubah apa pun: `base` otomatis `'/'` di semua build kecuali GitHub Actions
+(lihat [`astro.config.mjs`](astro.config.mjs) — `PROD_BASE` hanya dipakai GitHub Pages).
 
 ---
 
@@ -102,6 +103,6 @@ public/             gambar, favicon, og-image
 
 ## 🎨 Catatan desain
 
-- Palet **biru-putih premium** dengan aksen hangat **champagne-gold** (dipakai hemat).
+- Palet **merah membara** dengan aksen hangat **ember-oranye** (dipakai hemat).
 - Tipografi **Fraunces** (judul) + **Plus Jakarta Sans** (isi).
 - Animasi lembut & menghormati pengaturan *reduce motion* perangkat.
