@@ -100,6 +100,7 @@ const { cerita } = profile;
   /* Default = menyala (juga jadi fallback tanpa JS) */
   .tl-dot {
     position: absolute;
+    z-index: 1; /* di atas garis progress .timeline::after */
     left: -32px;
     top: 3px;
     width: 16px;
