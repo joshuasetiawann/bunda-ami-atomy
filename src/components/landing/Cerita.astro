@@ -34,6 +34,7 @@ const { cerita } = profile;
     background: var(--mist);
     border-top: 1px solid var(--line);
     border-bottom: 1px solid var(--line);
+    overflow: hidden;
   }
 
   .story-in {
@@ -60,7 +61,31 @@ const { cerita } = profile;
     top: 8px;
     bottom: 8px;
     width: 1.5px;
+    background: rgba(71, 6, 6, 0.12);
+  }
+
+  /* Garis progress: memanjang mengikuti scroll via --tl-progress (ScrollMotion) */
+  .timeline::after {
+    content: '';
+    position: absolute;
+    left: 7px;
+    top: 8px;
+    bottom: 8px;
+    width: 1.5px;
     background: linear-gradient(180deg, var(--azure), var(--sky), var(--gold-soft));
+    transform-origin: top;
+    transform: scaleY(var(--tl-progress, 0));
+  }
+
+  /* Tanpa JS / reduce motion: garis langsung penuh */
+  :global(html:not(.js)) .timeline::after {
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .timeline::after {
+      transform: none;
+    }
   }
 
   .tl-item {
@@ -72,6 +97,7 @@ const { cerita } = profile;
     padding-bottom: 0;
   }
 
+  /* Default = menyala (juga jadi fallback tanpa JS) */
   .tl-dot {
     position: absolute;
     left: -32px;
@@ -79,13 +105,22 @@ const { cerita } = profile;
     width: 16px;
     height: 16px;
     border-radius: 50%;
-    background: var(--paper);
+    background: var(--azure);
     border: 3px solid var(--azure);
+    box-shadow: 0 0 0 5px rgba(225, 29, 42, 0.12);
+    transition: background 0.45s ease, box-shadow 0.45s ease,
+      transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
 
   .tl-item.last .tl-dot {
-    background: var(--azure);
     border-color: var(--gold-soft);
+  }
+
+  /* Padam sebelum item ter-reveal (hanya saat JS aktif) */
+  :global(.js) .tl-item:not(.is-visible) .tl-dot {
+    background: var(--paper);
+    box-shadow: none;
+    transform: scale(0.6);
   }
 
   .tl-marker {
@@ -108,5 +143,27 @@ const { cerita } = profile;
     font-size: 0.98rem;
     line-height: 1.65;
     color: var(--muted);
+  }
+
+  /* Item masuk bergantian: ganjil dari kiri, genap dari kanan.
+     Menimpa transform .reveal global; stagger transition-delay inline tetap. */
+  :global(.js) .tl-item.reveal {
+    transform: translate3d(-30px, 14px, 0);
+  }
+
+  :global(.js) .tl-item.reveal:nth-child(even) {
+    transform: translate3d(30px, 14px, 0);
+  }
+
+  /* WAJIB paling akhir: menang atas kedua rule di atas saat sudah tampil */
+  :global(.js) .tl-item.reveal.is-visible {
+    transform: none;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    :global(.js) .tl-item.reveal {
+      opacity: 1;
+      transform: none;
+    }
   }
 </style>
