@@ -10,6 +10,7 @@ import Cerita from '../components/landing/Cerita.astro';
 import QuotesSection from '../components/landing/QuotesSection.astro';
 import ContactCTA from '../components/landing/ContactCTA.astro';
 import Footer from '../components/landing/Footer.astro';
+import ScrollMotion from '../components/landing/ScrollMotion.astro';
 import { site } from '../data/site';
 
 const title = `Profil ${site.name} · ${site.role}`;
@@ -31,6 +32,7 @@ const description =
     <ContactCTA />
   </main>
   <Footer />
+  <ScrollMotion />
 </BaseLayout>
 
 <style>

@@ -266,6 +266,106 @@ svg {
   transform: none;
 }
 
+/* ── Orbs: ornamen latar parallax (dekoratif) ──
+   Section pemakai wajib position: relative; z-index: 0;
+   orbs memakai z-index -1 agar selalu di belakang konten. */
+.orbs {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.orb {
+  position: absolute;
+  border-radius: 50%;
+  will-change: transform;
+}
+
+/* Visual bola di ::before agar animasi float tidak bentrok dengan
+   transform parallax inline yang dipasang ScrollMotion pada .orb. */
+.orb::before {
+  content: '';
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  filter: blur(42px);
+  animation: orb-float 12s ease-in-out infinite alternate;
+}
+
+.orb-a {
+  width: 320px;
+  height: 320px;
+  top: -70px;
+  left: -90px;
+}
+
+.orb-a::before {
+  background: radial-gradient(circle, rgba(225, 29, 42, 0.16), transparent 70%);
+}
+
+.orb-b {
+  width: 260px;
+  height: 260px;
+  right: -70px;
+  bottom: -50px;
+}
+
+.orb-b::before {
+  background: radial-gradient(circle, rgba(255, 122, 24, 0.15), transparent 70%);
+  animation-delay: -4s;
+  animation-duration: 14s;
+}
+
+.orb-c {
+  width: 210px;
+  height: 210px;
+  top: 36%;
+  right: 16%;
+}
+
+.orb-c::before {
+  background: radial-gradient(circle, rgba(255, 90, 50, 0.13), transparent 70%);
+  animation-delay: -8s;
+  animation-duration: 16s;
+}
+
+/* Varian posisi per section */
+.orbs-quotes .orb-a {
+  top: auto;
+  bottom: -90px;
+  left: -110px;
+}
+
+.orbs-quotes .orb-c {
+  top: -50px;
+  right: 12%;
+}
+
+.orbs-cta .orb-a {
+  width: 380px;
+  height: 380px;
+  top: -130px;
+  left: -70px;
+}
+
+.orbs-cta .orb-c {
+  top: auto;
+  bottom: -60px;
+  right: 24%;
+}
+
+@keyframes orb-float {
+  from {
+    transform: translate3d(0, -14px, 0) scale(1);
+  }
+  to {
+    transform: translate3d(0, 16px, 0) scale(1.06);
+  }
+}
+
 /* ── Hormati preferensi reduce motion ── */
 @media (prefers-reduced-motion: reduce) {
   html {
